@@ -8,32 +8,34 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
+      background: #f2f3f5;
+      color: #222;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      line-height: 1.6;
     }
     header {
-      padding: 40px;
+      background: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 40px 20px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.4);
     }
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-style: italic;
-      margin-bottom: 20px;
+      color: #555;
     }
     section {
-      max-width: 800px;
-      margin: 40px auto;
+      background: #ffffff;
+      box-shadow: 3px 3px 8px #d1d9e6, -3px -3px 8px #ffffff;
+      border-radius: 12px;
       padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 800px;
     }
     h2 {
-      border-bottom: 1px solid #555;
+      border-bottom: 1px solid #ccc;
       padding-bottom: 10px;
+      color: #333;
     }
     ul {
       list-style: none;
@@ -41,72 +43,64 @@
     }
     ul li::before {
       content: '>>';
-      color: #08f;
+      color: #888;
       margin-right: 10px;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
-      color: #aaa;
-    }
-    a {
-      color: #0ef;
-      text-decoration: none;
+      color: #888;
+      background: #f0f0f3;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     }
   </style>
 </head>
 <body>
   <header>
     <h1>“Play long-term games with long-term people.” – Naval Ravikant</h1>
-    <p>Raahim Shoukat | Strategy & Operations | Behavioral Economics Enthusiast</p>
+    <p>Raahim Shoukat | Strategy & Ops | Behavioral Economics Enthusiast</p>
   </header>
 
   <section>
-    <h2>About Me</h2>
-    <p>I'm an analyst and strategist who blends economic theory with real-world decision making. With experience at <a href="https://www.zoominfo.com/" target="_blank">ZoomInfo</a>, <a href="https://www.wayfair.com/" target="_blank">Wayfair</a>, and <a href="https://www.flexera.com/" target="_blank">Flexera</a>, I’ve driven impact through financial modeling, SQL automation, and business performance analysis.</p>
-  </section>
-
-  <section>
-    <h2>Professional Work</h2>
+    <h2>Professional Experience</h2>
     <ul>
-      <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo (NASDAQ: ZI)</a>:</strong> Go-to-market intelligence platform.<br>Live Stock Price: <span id="zi-stock-price">Loading...</span></li>
-      <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair (NYSE: W)</a>:</strong> E-commerce for home goods.<br>Live Stock Price: <span id="w-stock-price">Loading...</span></li>
-      <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera</a>:</strong> IT and cloud optimization solutions.</li>
-      <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen</a>:</strong> Public relations & strategic communications firm.</li>
+      <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo</a> – Strategy & Operations Analyst:</strong><br>
+        Worked on go-to-market strategy and sales compensation design for a public SaaS company. Built SQL-driven models to track and forecast commissions, leading to a 15% increase in incentive program adoption. Partnered cross-functionally to align incentive payouts with budget and revenue goals.
+      </li>
+      <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair</a> – Strategy & Commercial Associate:</strong><br>
+        Managed an $80M supplier portfolio for Wayfair’s outdoor furniture category. Developed financial models to optimize pricing, improve capital utilization, and reduce returns. Delivered strategic reports to senior leadership that drove a 15% drop in procurement costs.
+      </li>
+      <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera</a> – ESG Analyst:</strong><br>
+        Led the creation of the company’s first ESG report, including Scope 1, 2, and 3 emissions data. Built an internal carbon calculator that enabled customers to track their hardware emissions. Presented sustainability frameworks to stakeholders, including backers from Thoma Bravo.
+      </li>
+      <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen</a> – Business Analyst Intern:</strong><br>
+        Conducted research and background analysis on prospective clients for a top-tier public affairs firm. Tracked pipeline activity, created internal dashboards, and generated insights that improved team visibility and client strategy.
+      </li>
     </ul>
-  </section>
-
-  <section>
-    <h2>Skills & Tools</h2>
-    <ul>
-      <li>SQL | Python | Power BI | Excel | ClickHouse</li>
-      <li>JIRA | Salesforce | IBM SPSS | R | Stata</li>
-      <li>Financial Modeling | DCF | Forecasting | Process Automation</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <p><strong>Boston University</strong> — BA in Economics (2019–2023)</p>
-    <p>Clubs: BU Consulting Group, Stock Market Club, Tech & Business Club, Cricket Team</p>
-    <p><strong><a href="https://training-nyc.com/classes/financial-modeling" target="_blank">NYIM Finance Bootcamp</a></strong> — Financial Modeling (Mar 2025)</p>
   </section>
 
   <section>
     <h2>Books I Recommend</h2>
     <ul>
       <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman<br>
-        Reflects on how we think in two systems: fast (intuitive) and slow (deliberate). Helped me question my biases.
+        Kahneman breaks down how we think in two systems: fast (intuitive) and slow (deliberate). Helped me reflect on biases and cognitive friction.
       </li>
       <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely<br>
-        Shows how our irrational decisions can be predicted — vital for product and strategy thinking.
+        Demonstrates how humans make irrational yet predictable decisions. Pushed me to see strategy and pricing through a behavioral lens.
       </li>
       <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson<br>
-        A modern guide to leverage, wealth, and clarity. Timeless and actionable.
+        Naval’s ideas on wealth, leverage, and clarity made this a handbook I revisit often.
       </li>
       <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard Thaler & Cass Sunstein<br>
-        The go-to book on using behavioral design to help people make better choices.
+        Explains how small environmental tweaks can nudge people toward better decisions — a key tool for product and public policy.
       </li>
     </ul>
   </section>
@@ -115,32 +109,32 @@
     <h2>Podcasts I Like</h2>
     <ul>
       <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – Naval Ravikant<br>
-        Wisdom on leverage, wealth, peace, and first-principles thinking.
+        Short, timeless insights on wealth, decision-making, and clarity. My favorite when I want to zoom out.
       </li>
       <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Stephen Dubner<br>
-        Explores the hidden side of everything using data and stories.
+        Engaging, data-backed stories that challenge everyday assumptions through economic logic.
       </li>
       <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Shane Parrish<br>
-        Interviews with world-class thinkers on decision-making and mental models.
+        Deep dives with big thinkers. This podcast taught me how to think better — not just faster.
       </li>
     </ul>
   </section>
 
   <section>
     <h2>Stocks I Recommend</h2>
-    <p style="font-size: 0.9em; color: #ccc;">*Live stock prices below are sourced from the <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage API</a>.</p>
+    <p style="font-size: 0.9em; color: #777;">*Live stock prices below are sourced from the <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage API</a>.</p>
     <ul>
-      <li><strong><a href="https://www.berkshirehathaway.com/" target="_blank">Berkshire Hathaway (NYSE: BRK.B)</a>:</strong><br>
-        Live Stock Price: <span id="brkb-stock-price">Loading...</span><br>
-        Warren Buffett's long-term compounder. Built on patience and deep value investing.
+      <li><strong><a href="https://www.berkshirehathaway.com/" target="_blank">Berkshire Hathaway <span style="color: #444">(NYSE: <strong>BRK.B</strong>)</span></a>:</strong><br>
+        Price: <span id="brkb-stock-price" style="color: #0a84ff; font-weight: bold;">Loading...</span><br>
+        Buffett’s legacy of long-term, disciplined compounding.
       </li>
-      <li><strong><a href="https://solenotx.com/" target="_blank">Soleno Therapeutics (NASDAQ: SLNO)</a>:</strong><br>
-        Live Stock Price: <span id="slno-stock-price">Loading...</span><br>
-        Tackling Prader-Willi Syndrome — high risk, high impact potential in rare disease space.
+      <li><strong><a href="https://solenotx.com/" target="_blank">Soleno Therapeutics <span style="color: #444">(NASDAQ: <strong>SLNO</strong>)</span></a>:</strong><br>
+        Price: <span id="slno-stock-price" style="color: #0a84ff; font-weight: bold;">Loading...</span><br>
+        A small-cap biotech aiming to revolutionize PWS treatment.
       </li>
-      <li><strong><a href="https://www.spdrgoldshares.com/usa/" target="_blank">SPDR Gold Shares (NYSEARCA: GLD)</a>:</strong><br>
-        Live Stock Price: <span id="gld-stock-price">Loading...</span><br>
-        A low-cost hedge against inflation and uncertain markets.
+      <li><strong><a href="https://www.spdrgoldshares.com/usa/" target="_blank">SPDR Gold Shares <span style="color: #444">(NYSEARCA: <strong>GLD</strong>)</span></a>:</strong><br>
+        Price: <span id="gld-stock-price" style="color: #0a84ff; font-weight: bold;">Loading...</span><br>
+        A smart hedge against macro uncertainty and inflation.
       </li>
     </ul>
   </section>
@@ -165,8 +159,6 @@
       }
     }
 
-    fetchStockPrice('ZI', 'zi-stock-price');
-    fetchStockPrice('W', 'w-stock-price');
     fetchStockPrice('BRK.B', 'brkb-stock-price');
     fetchStockPrice('SLNO', 'slno-stock-price');
     fetchStockPrice('GLD', 'gld-stock-price');
