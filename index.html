@@ -3,186 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raahim Shoukat | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet" />
+  <title>Pac-Man Game</title>
   <style>
-    body, html {
-      font-family: 'Georgia', serif;
-      background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #1a1a1a;
+    body {
       margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-      line-height: 1.7;
-    }
-    .hero {
-      height: 100vh;
-      background: rgba(255, 255, 255, 0.85);
+      background: black;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      opacity: 1;
-      animation: fadeIn 2s ease-in-out;
+      height: 100vh;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero h1 {
-      font-size: 1.8rem;
-      font-style: normal;
-      font-weight: normal;
-      color: #1a1a1a;
-      max-width: 700px;
-      margin-bottom: 20px;
-    }
-    .scroll-down {
-      font-size: 1rem;
-      color: red;
-      animation: bounce 2s infinite;
-      text-decoration: none;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
-    section {
-      background: #ffffffee;
-      border: 1px solid #e5e5e5;
-      padding: 30px;
-      margin: 40px auto;
-      max-width: 720px;
-      border-radius: 4px;
-    }
-    h2 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-      color: #333;
-      font-weight: normal;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li::before {
-      content: '•';
-      color: #888;
-      margin-right: 8px;
-    }
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #999;
-      background: #f5f5f5ee;
-    }
-    @media only screen and (max-width: 768px) {
-    .hero h1, #econ-question {
-      font-size: 1.2rem;
-      padding: 0 10px;
-    }
-    section {
-      margin: 20px 10px;
-      padding: 20px;
-    }
-    .scroll-down {
-      font-size: 0.9rem;
-    }
-    button {
+    canvas {
       display: block;
-      margin: 10px auto;
-      width: 80%;
+      background: #000;
     }
-  }
-</style>
+  </style>
 </head>
 <body>
+  <canvas id="pacman" width="560" height="620"></canvas>
 
-<div class="hero">
-  <div id="econ-question" style="margin-bottom: 20px; font-size: 1.2rem; color: #333; max-width: 700px;">
-    <!-- Question will appear here -->
+  <div style="position: absolute; top: 20px; left: 20px;">
+    <a href="index.html" style="color: #fff200; font-family: sans-serif; font-size: 16px; text-decoration: none; background: #111; padding: 8px 12px; border-radius: 4px;">← Back to Portfolio</a>
   </div>
-  <h1>I'm Raahim — based in New York City. I've worked on strategy teams at two public companies, love reading Naval Ravikant and Daniel Kahneman, studied Economics at Boston University, and spend weekends at squash events. I built this website from scratch because I wanted to learn how — and I fundamentally believe humans can do anything. Welcome to my world.</h1>
-  <a href="#question-section" class="scroll-down">Scroll down ↓</a>
-</div>
+  <script>
+    const canvas = document.getElementById("pacman");
+    const ctx = canvas.getContext("2d");
 
-<div id="content">
-  <section>
-    <h2>Professional Experience</h2>
-    <ul>
-      <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo</a> – Strategy & Operations Analyst:</strong><br>
-        Contributed to sales strategy and compensation design at a public SaaS company. Built SQL models to track commission payouts, improving transparency and alignment across teams.
-      </li>
-      <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair</a> – Strategy & Commercial Associate:</strong><br>
-        Oversaw an $80M portfolio, optimized supplier pricing, and presented executive reports that led to a 15% cost reduction in logistics.
-      </li>
-      <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera</a> – ESG Analyst:</strong><br>
-        Built an internal carbon calculator, produced Flexera’s first ESG report, and presented emissions reduction strategies across departments.
-      </li>
-      <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen</a> – Business Analyst Intern:</strong><br>
-        Delivered client backgrounders and deal tracking updates to drive strategy for high-profile campaigns.
-      </li>
-    </ul>
-  </section>
+    const pacman = {
+      x: 50,
+      y: 50,
+      radius: 20,
+      angle: 0.2,
+      speed: 5,
+      direction: "right"
+    };
 
-  <section>
-    <h2>Education</h2>
-    <ul>
-      <li><strong>Boston University</strong> – BA in Economics, Class of 2023<br>
-        Graduated <em>cum laude</em>. Specialized in behavioral economics, econometrics, and decision science.
-      </li>
-    </ul>
-  </section>
+    const walls = [
+      { x: 0, y: 0, width: 560, height: 20 },
+      { x: 0, y: 0, width: 20, height: 620 },
+      { x: 540, y: 0, width: 20, height: 620 },
+      { x: 0, y: 600, width: 560, height: 20 }
+    ];
 
-  <section>
-    <h2>Books I Recommend</h2>
-    <ul>
-      <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman</li>
-      <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely</li>
-      <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson</li>
-      <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard Thaler & Cass Sunstein</li>
-    </ul>
-  </section>
+    function drawPacman() {
+      ctx.beginPath();
+      let start = pacman.direction === "right" ? 0.2 : pacman.direction === "left" ? 1.2 : pacman.direction === "up" ? 1.75 : 0.75;
+      let end = pacman.direction === "right" ? 1.8 : pacman.direction === "left" ? 0.8 : pacman.direction === "up" ? 1.25 : 0.25;
+      ctx.arc(pacman.x, pacman.y, pacman.radius, Math.PI * start, Math.PI * end);
+      ctx.lineTo(pacman.x, pacman.y);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+    }
 
-  <section>
-    <h2>Podcasts I Like</h2>
-    <ul>
-      <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – Naval Ravikant</li>
-      <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Stephen Dubner</li>
-      <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Shane Parrish</li>
-    </ul>
-  </section>
+    function drawWalls() {
+      ctx.fillStyle = "blue";
+      walls.forEach(w => ctx.fillRect(w.x, w.y, w.width, w.height));
+    }
 
-  <section>
-    <h2>Stocks I Own</h2>
-    <ul>
-      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong><br>
-        Catalyst: Long-term compounder led by Warren Buffett, known for crisis-era value investing and consistent returns.</li>
-      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong><br>
-        Catalyst: Advancing treatment for Prader-Willi Syndrome — a rare condition with high unmet medical need. FDA breakthrough designation pending wider rollout.</li>
-      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong><br>
-        Catalyst: Hedge against inflation, market volatility, and geopolitical uncertainty. Performs well during macroeconomic stress.</li>
-    </ul>
-  </section>
-</div>
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
-<footer>
-  <p>Contact: <a href="mailto:raahimshoukat99@gmail.com">raahimshoukat99@gmail.com</a> | New York, NY | (857) 207-7427</p>
-  <p>&copy; 2025 Raahim Shoukat</p>
-</footer>
+    function movePacman() {
+      switch (pacman.direction) {
+        case "right": pacman.x += pacman.speed; break;
+        case "left": pacman.x -= pacman.speed; break;
+        case "up": pacman.y -= pacman.speed; break;
+        case "down": pacman.y += pacman.speed; break;
+      }
+    }
 
+    function gameLoop() {
+      clearCanvas();
+      drawWalls();
+      movePacman();
+      drawPacman();
+      requestAnimationFrame(gameLoop);
+    }
 
+    document.addEventListener("keydown", e => {
+      switch (e.key) {
+        case "ArrowRight": pacman.direction = "right"; break;
+        case "ArrowLeft": pacman.direction = "left"; break;
+        case "ArrowUp": pacman.direction = "up"; break;
+        case "ArrowDown": pacman.direction = "down"; break;
+      }
+    });
 
+    gameLoop();
+  </script>
 </body>
 </html>
