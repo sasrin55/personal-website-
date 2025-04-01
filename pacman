@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pac-Man Game</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+      background: #000;
+    }
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff200;
+      font-family: sans-serif;
+      font-size: 16px;
+      text-decoration: none;
+      background: #111;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pacman" width="560" height="620"></canvas>
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+  <script>
+    const canvas = document.getElementById("pacman");
+    const ctx = canvas.getContext("2d");
+
+    const pacman = {
+      x: 50,
+      y: 50,
+      radius: 20,
+      angle: 0.2,
+      speed: 5,
+      direction: "right"
+    };
+
+    const walls = [
+      { x: 0, y: 0, width: 560, height: 20 },
+      { x: 0, y: 0, width: 20, height: 620 },
+      { x: 540, y: 0, width: 20, height: 620 },
+      { x: 0, y: 600, width: 560, height: 20 }
+    ];
+
+    function drawPacman() {
+      ctx.beginPath();
+      let start = pacman.direction === "right" ? 0.2 : pacman.direction === "left" ? 1.2 : pacman.direction === "up" ? 1.75 : 0.75;
+      let end = pacman.direction === "right" ? 1.8 : pacman.direction === "left" ? 0.8 : pacman.direction === "up" ? 1.25 : 0.25;
+      ctx.arc(pacman.x, pacman.y, pacman.radius, Math.PI * start, Math.PI * end);
+      ctx.lineTo(pacman.x, pacman.y);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+    }
+
+    function drawWalls() {
+      ctx.fillStyle = "blue";
+      walls.forEach(w => ctx.fillRect(w.x, w.y, w.width, w.height));
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function movePacman() {
+      switch (pacman.direction) {
+        case "right": pacman.x += pacman.speed; break;
+        case "left": pacman.x -= pacman.speed; break;
+        case "up": pacman.y -= pacman.speed; break;
+        case "down": pacman.y += pacman.speed; break;
+      }
+    }
+
+    function gameLoop() {
+      clearCanvas();
+      drawWalls();
+      movePacman();
+      drawPacman();
+      requestAnimationFrame(gameLoop);
+    }
+
+    document.addEventListener("keydown", e => {
+      switch (e.key) {
+        case "ArrowRight": pacman.direction = "right"; break;
+        case "ArrowLeft": pacman.direction = "left"; break;
+        case "ArrowUp": pacman.direction = "up"; break;
+        case "ArrowDown": pacman.direction = "down"; break;
+      }
+    });
+
+    gameLoop();
+  </script>
+</body>
+</html>
