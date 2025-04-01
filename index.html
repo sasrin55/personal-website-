@@ -62,59 +62,43 @@
     <p>Raahim Shoukat | Strategy & Operations | Behavioral Economics Enthusiast</p>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>I'm an analyst and strategist who blends economic theory with real-world decision making. With experience at Wayfair, ZoomInfo, and Flexera, I’ve driven impact through financial modeling, SQL automation, and business performance analysis. I believe in asking the right questions, building systems that scale, and obsessing over the small things that drive big outcomes.</p>
-  </section>
+  <!-- Existing sections omitted for brevity -->
 
   <section>
-    <h2>Professional Work</h2>
+    <h2>Stocks I Recommend</h2>
     <ul>
-      <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo:</a></strong> Designed SQL-driven comp models; improved tracker adoption by 15%.</li>
-      <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair:</a></strong> Reduced procurement costs 15% through smarter supplier negotiations.</li>
-      <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera:</a></strong> Built an ESG calculator and authored the company’s first full ESG report.</li>
-      <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen:</a></strong> Built dashboards and insights that supported deal pipeline visibility.</li>
+      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong> Because Warren Buffett knows what he's doing — anyone who can sell before a crash is a genius.<br>Current Stock Price: <span id="brkb-stock-price">Loading...</span></li>
+      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong> For its discovery in PWS (Prader-Willi Syndrome), a rare genetic disorder affecting approximately 1 in 15,000 births.<br>Current Stock Price: <span id="slno-stock-price">Loading...</span></li>
+      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong> A hedge against economic uncertainty and market volatility.<br>Current Stock Price: <span id="gld-stock-price">Loading...</span></li>
     </ul>
-  </section>
-
-  <section>
-    <h2>Skills & Tools</h2>
-    <ul>
-      <li><a href="https://www.sqltutorial.org/" target="_blank">SQL</a> | <a href="https://www.python.org/" target="_blank">Python</a> | <a href="https://powerbi.microsoft.com/" target="_blank">Power BI</a> | Excel | ClickHouse</li>
-      <li>JIRA | Salesforce | IBM SPSS | R | Stata</li>
-      <li>Financial Modeling | DCF | Forecasting | Process Automation</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Books I Recommend</h2>
-    <ul>
-      <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman</li>
-      <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely</li>
-      <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson</li>
-      <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard H. Thaler & Cass R. Sunstein</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Podcasts I Like</h2>
-    <ul>
-      <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – On leverage, wealth, and decision-making</li>
-      <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Hidden side of everything</li>
-      <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Mental models + life optimization</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <p><strong>Boston University</strong> — BA in Economics (2019–2023)</p>
-    <p>Clubs: BU Consulting Group, Stock Market Club, Tech & Business Club, Cricket Team</p>
-    <p><strong><a href="https://training-nyc.com/classes/financial-modeling" target="_blank">NYIM Finance Bootcamp</a></strong> — Financial Modeling (Mar 2025)</p>
   </section>
 
   <footer>
     <p>Contact: <a href="mailto:raahimshoukat99@gmail.com">raahimshoukat99@gmail.com</a> | New York, NY | (857) 207-7427</p>
     <p>&copy; 2025 Raahim Shoukat</p>
   </footer>
+
+  <script>
+    async function fetchStockPrice(symbol, elementId) {
+      const apiKey = 'YWJ469OHEJZ6OVIY';
+      const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const price = data['Global Quote']['05. price'];
+        document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
+      } catch (error) {
+        console.error('Error fetching stock price:', error);
+        document.getElementById(elementId).textContent = 'N/A';
+      }
+    }
+
+    fetchStockPrice('ZI', 'zi-stock-price');
+    fetchStockPrice('W', 'w-stock-price');
+    fetchStockPrice('BRK.B', 'brkb-stock-price');
+    fetchStockPrice('SLNO', 'slno-stock-price');
+    fetchStockPrice('GLD', 'gld-stock-price');
+  </script>
 </body>
 </html>
