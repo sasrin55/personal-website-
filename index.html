@@ -32,6 +32,7 @@
       padding: 20px;
       border-radius: 8px;
       max-width: 700px;
+      font-weight: normal;
     }
     .scroll-down {
       font-size: 1rem;
@@ -51,16 +52,28 @@
       margin: 40px auto;
       max-width: 720px;
       border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
       border-bottom: 1px solid #ddd;
       padding-bottom: 10px;
       color: #333;
       font-weight: normal;
+      letter-spacing: 0.5px;
     }
     ul {
       list-style: none;
       padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 12px;
     }
     ul li::before {
       content: '•';
@@ -80,6 +93,25 @@
       font-size: 0.9rem;
       color: #999;
       background: #f5f5f5ee;
+    }
+    .timeline {
+      position: relative;
+      border-left: 3px solid #ccc;
+      padding-left: 25px;
+    }
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      background: #0077cc;
+      border-radius: 50%;
     }
   </style>
 </head>
@@ -172,5 +204,17 @@
   <p>&copy; 2025 Raahim Shoukat</p>
 </footer>
 
+<script>
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
