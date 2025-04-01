@@ -1,104 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raahim Shoukat | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      line-height: 1.6;
-    }
-    header {
-      padding: 40px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    header h1 {
-      font-size: 2.2rem;
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-    }
-    h2 {
-      border-bottom: 1px solid #555;
-      padding-bottom: 10px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li::before {
-      content: '>>';
-      color: #08f;
-      margin-right: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    a {
-      color: #0ef;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>"Play long-term games with long-term people." – Naval Ravikant</h1>
-    <p>Raahim Shoukat | Strategy & Operations | Behavioral Economics Enthusiast</p>
-  </header>
+<section>
+  <h2>Books I Recommend</h2>
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman<br>
+      Kahneman, a Nobel laureate, breaks down how we think in two systems: fast (intuitive) and slow (deliberate). I recommend it because it made me reflect on my biases and shaped how I approach problem-solving in business.
+    </li>
+    <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely<br>
+      Ariely explains how humans make irrational decisions in systematic and predictable ways. I loved how it merged psychology with economics, and it pushed me to understand how to influence decision-making in strategic work.
+    </li>
+    <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson (compiled from Naval's thoughts)<br>
+      This isn’t a traditional book — it’s a collection of Naval’s ideas on wealth, happiness, and leverage. I go back to it regularly because it feels timeless and highly applicable to both career and life decisions.
+    </li>
+    <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard H. Thaler & Cass R. Sunstein<br>
+      Thaler and Sunstein give real-life examples of how to steer people toward better decisions without forcing them. I recommend it because it connects behavioral science with public policy and product design in a way that’s easy to apply.
+    </li>
+  </ul>
+</section>
 
-  <!-- Existing sections omitted for brevity -->
+<section>
+  <h2>Podcasts I Like</h2>
+  <ul>
+    <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – Naval Ravikant<br>
+      Naval's podcast is short, dense, and packed with wisdom. I listen to it for perspective on how to think independently, build leverage, and prioritize peace over busy-ness.
+    </li>
+    <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Hosted by Stephen Dubner<br>
+      This show dives into the unexpected side of everyday topics using data. I recommend it because it shows how economic thinking can explain (and sometimes debunk) how the world works.
+    </li>
+    <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Hosted by Shane Parrish<br>
+      A long-form podcast featuring deep thinkers and decision-makers. It helps me refine how I think and exposes me to mental models that improve personal and professional clarity.
+    </li>
+  </ul>
+</section>
 
-  <section>
-    <h2>Stocks I Recommend</h2>
-    <ul>
-      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong> Because Warren Buffett knows what he's doing — anyone who can sell before a crash is a genius.<br>Current Stock Price: <span id="brkb-stock-price">Loading...</span></li>
-      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong> For its discovery in PWS (Prader-Willi Syndrome), a rare genetic disorder affecting approximately 1 in 15,000 births.<br>Current Stock Price: <span id="slno-stock-price">Loading...</span></li>
-      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong> A hedge against economic uncertainty and market volatility.<br>Current Stock Price: <span id="gld-stock-price">Loading...</span></li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>Contact: <a href="mailto:raahimshoukat99@gmail.com">raahimshoukat99@gmail.com</a> | New York, NY | (857) 207-7427</p>
-    <p>&copy; 2025 Raahim Shoukat</p>
-  </footer>
-
-  <script>
-    async function fetchStockPrice(symbol, elementId) {
-      const apiKey = 'YWJ469OHEJZ6OVIY';
-      const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`;
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const price = data['Global Quote']['05. price'];
-        document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
-      } catch (error) {
-        console.error('Error fetching stock price:', error);
-        document.getElementById(elementId).textContent = 'N/A';
-      }
-    }
-
-    fetchStockPrice('ZI', 'zi-stock-price');
-    fetchStockPrice('W', 'w-stock-price');
-    fetchStockPrice('BRK.B', 'brkb-stock-price');
-    fetchStockPrice('SLNO', 'slno-stock-price');
-    fetchStockPrice('GLD', 'gld-stock-price');
-  </script>
-</body>
-</html>
+<section>
+  <h2>Stocks I Recommend</h2>
+  <ul>
+    <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong><br>
+      Current Stock Price: <span id="brkb-stock-price">Loading...</span><br>
+      Led by Warren Buffett, Berkshire is a long-term compounder that reflects patient, value-driven investing. I recommend it because Buffett’s discipline, track record, and crisis timing have consistently outperformed over decades.
+    </li>
+    <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong><br>
+      Current Stock Price: <span id="slno-stock-price">Loading...</span><br>
+      Soleno is working on a breakthrough therapy for Prader-Willi Syndrome (PWS), a rare condition affecting 1 in 15,000 people. I like it for its potential social and medical impact — it’s a true asymmetric opportunity.
+    </li>
+    <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong><br>
+      Current Stock Price: <span id="gld-stock-price">Loading...</span><br>
+      GLD is a low-cost way to gain exposure to gold. I recommend it as a strategic hedge during times of inflation, market volatility, and broader economic uncertainty.
+    </li>
+  </ul>
+</section>
