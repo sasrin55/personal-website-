@@ -3,8 +3,11 @@ body {
   margin: 0;
   padding: 20px;
   line-height: 1.6;
-  background: #f4f4f4;
-  color: #333;
+  background-image: url('bg.jpg'); /* your image name */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
 }
 
 header {
