@@ -6,28 +6,44 @@
   <title>Raahim Shoukat | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
   <style>
-    body {
+    body, html {
       font-family: 'Roboto', sans-serif;
-      background: #fff9db; /* soft yellow background */
+      background: #fff9db;
       color: #222;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
-    header {
-      background: #fdd835; /* warm yellow header */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      padding: 40px 20px;
+    .hero {
+      height: 100vh;
+      background: #fdd835;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 0 20px;
+      opacity: 1;
+      animation: fadeIn 2s ease-in-out;
     }
-    header h1 {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
       font-size: 2rem;
       font-style: italic;
       color: #333;
+      margin-bottom: 20px;
     }
-    header p {
+    .scroll-down {
       font-size: 1rem;
-      margin-top: 10px;
-      color: #444;
+      color: #555;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
     section {
       background: #ffffff;
@@ -70,66 +86,70 @@
 </head>
 <body>
 
-<header>
-  <h1>“Nothing in life is as important as you think it is, while you are thinking about it.” – Daniel Kahneman</h1>
-  <p>Raahim Shoukat | Strategy & Ops | Behavioral Economics Enthusiast</p>
-</header>
+<div class="hero">
+  <h1>“Nothing in life is as important as you think it is, while you are thinking about it.”<br>– Daniel Kahneman</h1>
+  <a href="#content" class="scroll-down">Scroll down ↓</a>
+</div>
 
-<section>
-  <h2>Professional Experience</h2>
-  <ul>
-    <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo</a> – Strategy & Operations Analyst:</strong><br>
-      Worked on go-to-market strategy and sales compensation design for a public SaaS company. Built SQL-driven models to track and forecast commissions, leading to a 15% increase in incentive program adoption.
-    </li>
-    <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair</a> – Strategy & Commercial Associate:</strong><br>
-      Managed an $80M supplier portfolio for Wayfair’s outdoor furniture category. Developed financial models to optimize pricing, improve capital utilization, and reduce returns.
-    </li>
-    <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera</a> – ESG Analyst:</strong><br>
-      Created the company’s first ESG report and internal carbon calculator. Led emissions tracking and analysis used by internal teams and external partners.
-    </li>
-    <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen</a> – Business Analyst Intern:</strong><br>
-      Conducted research and created internal dashboards to support strategy for high-profile public affairs clients.
-    </li>
-  </ul>
-</section>
+<div id="content">
 
-<section>
-  <h2>Education</h2>
-  <ul>
-    <li><strong>Boston University</strong> – BA in Economics, Class of 2023<br>
-      Graduated <em>cum laude</em>. Focused on behavioral economics, forecasting, and econometrics.
-    </li>
-  </ul>
-</section>
+  <section>
+    <h2>Professional Experience</h2>
+    <ul>
+      <li><strong><a href="https://www.zoominfo.com/" target="_blank">ZoomInfo</a> – Strategy & Operations Analyst:</strong><br>
+        Worked on go-to-market strategy and sales compensation design for a public SaaS company. Built SQL-driven models to track and forecast commissions, leading to a 15% increase in incentive program adoption.
+      </li>
+      <li><strong><a href="https://www.wayfair.com/" target="_blank">Wayfair</a> – Strategy & Commercial Associate:</strong><br>
+        Managed an $80M supplier portfolio for Wayfair’s outdoor furniture category. Developed financial models to optimize pricing, improve capital utilization, and reduce returns.
+      </li>
+      <li><strong><a href="https://www.flexera.com/" target="_blank">Flexera</a> – ESG Analyst:</strong><br>
+        Created the company’s first ESG report and internal carbon calculator. Led emissions tracking and analysis used by internal teams and external partners.
+      </li>
+      <li><strong><a href="https://berlinrosen.com/" target="_blank">BerlinRosen</a> – Business Analyst Intern:</strong><br>
+        Conducted research and created internal dashboards to support strategy for high-profile public affairs clients.
+      </li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Books I Recommend</h2>
-  <ul>
-    <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman</li>
-    <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely</li>
-    <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson</li>
-    <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard Thaler & Cass Sunstein</li>
-  </ul>
-</section>
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Boston University</strong> – BA in Economics, Class of 2023<br>
+        Graduated <em>cum laude</em>. Focused on behavioral economics, forecasting, and econometrics.
+      </li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Podcasts I Like</h2>
-  <ul>
-    <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – Naval Ravikant</li>
-    <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Stephen Dubner</li>
-    <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Shane Parrish</li>
-  </ul>
-</section>
+  <section>
+    <h2>Books I Recommend</h2>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank"><em>Thinking, Fast and Slow</em></a> – Daniel Kahneman</li>
+      <li><a href="https://danariely.com/books/predictably-irrational/" target="_blank"><em>Predictably Irrational</em></a> – Dan Ariely</li>
+      <li><a href="https://www.navalmanack.com/" target="_blank"><em>The Almanack of Naval Ravikant</em></a> – Eric Jorgenson</li>
+      <li><a href="https://en.wikipedia.org/wiki/Nudge_(book)" target="_blank"><em>Nudge</em></a> – Richard Thaler & Cass Sunstein</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Stocks I Recommend</h2>
-  <p style="font-size: 0.9em; color: #777;">*Live prices via <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage API</a>.</p>
-  <ul>
-    <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong> <span id="brkb-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
-    <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong> <span id="slno-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
-    <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong> <span id="gld-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
-  </ul>
-</section>
+  <section>
+    <h2>Podcasts I Like</h2>
+    <ul>
+      <li><a href="https://nav.al/podcast" target="_blank"><strong>Naval</strong></a> – Naval Ravikant</li>
+      <li><a href="https://freakonomics.com/archive/" target="_blank"><strong>Freakonomics Radio</strong></a> – Stephen Dubner</li>
+      <li><a href="https://fs.blog/knowledge-project/" target="_blank"><strong>The Knowledge Project</strong></a> – Shane Parrish</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Stocks I Recommend</h2>
+    <p style="font-size: 0.9em; color: #777;">*Live prices via <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage API</a>.</p>
+    <ul>
+      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong> <span id="brkb-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
+      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong> <span id="slno-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
+      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong> <span id="gld-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span></li>
+    </ul>
+  </section>
+
+</div>
 
 <footer>
   <p>Contact: <a href="mailto:raahimshoukat99@gmail.com">raahimshoukat99@gmail.com</a> | New York, NY | (857) 207-7427</p>
