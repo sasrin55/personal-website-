@@ -191,7 +191,11 @@
       const response = await fetch(url);
       const data = await response.json();
       const price = data['Global Quote']['05. price'];
-      document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
+      if (price) {
+        document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
+      } else {
+        document.getElementById(elementId).textContent = 'N/A';
+      }
     } catch {
       document.getElementById(elementId).textContent = 'N/A';
     }
@@ -200,15 +204,6 @@
   fetchStockPrice('BRK.B', 'brkb-stock-price');
   fetchStockPrice('SLNO', 'slno-stock-price');
   fetchStockPrice('GLD', 'gld-stock-price');
-
-  
-
-  
-
-  
-
-  `);
-  }
 </script>
 
 </body>
