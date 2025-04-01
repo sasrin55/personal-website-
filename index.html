@@ -118,7 +118,8 @@
 </div>
 
 <div id="question-section" style="text-align: center; padding: 40px; background-color: #ffffffcc;">
-  <h2 id="econ-question" style="margin-bottom: 20px; font-size: 1.2rem; color: #333;">Wait — answer this first:</h2>
+  <h2 style="margin-bottom: 20px; font-size: 1.2rem; color: #333;">Wait — answer this first:</h2>
+  <p id="econ-question" style="font-size: 1.1rem; margin-bottom: 20px;">Question loading...</p>
   <div style="margin: 20px 0;">
     <button onclick="recordAnswer('Yes')" style="margin-right: 20px; padding: 10px 20px; font-family: Georgia; font-size: 1rem; cursor: pointer;">Yes</button>
     <button onclick="recordAnswer('No')" style="padding: 10px 20px; font-family: Georgia; font-size: 1rem; cursor: pointer;">No</button>
@@ -226,7 +227,7 @@
   function showRandomQuestion() {
     const index = Math.floor(Date.now() / 600000) % questions.length;
     const question = questions[index];
-    document.getElementById('econ-question').innerText = 'Before you scroll, answer this: ' + question;
+    document.getElementById('econ-question').textContent = question;
   }
 
   showRandomQuestion();
