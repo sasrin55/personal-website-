@@ -166,13 +166,12 @@
 
   <section>
     <h2>Stocks I Own</h2>
-    <p style="font-size: 0.9em; color: #777;">*Live prices via <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage API</a>.</p>
     <ul>
-      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong> <span id="brkb-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span><br>
+      <li><strong>Berkshire Hathaway (NYSE: BRK.B):</strong><br>
         Catalyst: Long-term compounder led by Warren Buffett, known for crisis-era value investing and consistent returns.</li>
-      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong> <span id="slno-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span><br>
+      <li><strong>Soleno Therapeutics (NASDAQ: SLNO):</strong><br>
         Catalyst: Advancing treatment for Prader-Willi Syndrome — a rare condition with high unmet medical need. FDA breakthrough designation pending wider rollout.</li>
-      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong> <span id="gld-stock-price" style="color:#0a84ff;font-weight:bold;">Loading...</span><br>
+      <li><strong>SPDR Gold Shares (NYSEARCA: GLD):</strong><br>
         Catalyst: Hedge against inflation, market volatility, and geopolitical uncertainty. Performs well during macroeconomic stress.</li>
     </ul>
   </section>
@@ -183,30 +182,7 @@
   <p>&copy; 2025 Raahim Shoukat</p>
 </footer>
 
-<script>
-  async function fetchStockPrice(symbol, elementId) {
-    const apiKey = 'YWJ469OHEJZ6OVIY';
-    const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      const price = data['Global Quote']['05. price'];
-      if (price) {
-        document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
-      } else {
-        document.getElementById(elementId).textContent = 'N/A';
-      }
-    } catch (err) {
-      console.error('Error fetching stock price:', err);
-      document.getElementById(elementId).textContent = 'N/A';
-    }
-  }
 
-  fetchStockPrice('BRK-B', 'brkb-stock-price');
-  fetchStockPrice('SLNO', 'slno-stock-price');
-  fetchStockPrice('GLD', 'gld-stock-price');
-</script>
 
 </body>
 </html>
