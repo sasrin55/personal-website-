@@ -1,3 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raahim Shoukat | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f2f3f5;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-style: italic;
+      color: #555;
+    }
+    header p {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #666;
+    }
+    section {
+      background: #ffffff;
+      box-shadow: 3px 3px 8px #d1d9e6, -3px -3px 8px #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li::before {
+      content: '>>';
+      color: #888;
+      margin-right: 10px;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      background: #f0f0f3;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
 <header>
   <h1>“Nothing in life is as important as you think it is, while you are thinking about it.” – Daniel Kahneman</h1>
   <p>Raahim Shoukat | Strategy & Ops | Behavioral Economics Enthusiast</p>
@@ -81,3 +153,30 @@
     </li>
   </ul>
 </section>
+
+<footer>
+  <p>Contact: <a href="mailto:raahimshoukat99@gmail.com">raahimshoukat99@gmail.com</a> | New York, NY | (857) 207-7427</p>
+  <p>&copy; 2025 Raahim Shoukat</p>
+</footer>
+
+<script>
+  async function fetchStockPrice(symbol, elementId) {
+    const apiKey = 'YWJ469OHEJZ6OVIY';
+    const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const price = data['Global Quote']['05. price'];
+      document.getElementById(elementId).textContent = `$${parseFloat(price).toFixed(2)}`;
+    } catch (err) {
+      document.getElementById(elementId).textContent = 'N/A';
+      console.error(err);
+    }
+  }
+  fetchStockPrice('BRK.B', 'brkb-stock-price');
+  fetchStockPrice('SLNO', 'slno-stock-price');
+  fetchStockPrice('GLD', 'gld-stock-price');
+</script>
+
+</body>
+</html>
