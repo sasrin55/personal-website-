@@ -92,6 +92,9 @@
 <body>
 
 <div class="hero">
+  <div id="econ-question" style="margin-bottom: 20px; font-size: 1.2rem; color: #333; max-width: 700px;">
+    <!-- Question will appear here -->
+  </div>
   <h1>I'm Raahim — based in New York City. I've worked on strategy teams at two public companies, love reading Naval Ravikant and Daniel Kahneman, studied Economics at Boston University, and spend weekends at squash events. I built this website from scratch because I wanted to learn how — and I fundamentally believe humans can do anything. Welcome to my world.</h1>
   <a href="#content" class="scroll-down">Scroll down ↓</a>
 </div>
@@ -179,6 +182,27 @@
   fetchStockPrice('BRK.B', 'brkb-stock-price');
   fetchStockPrice('SLNO', 'slno-stock-price');
   fetchStockPrice('GLD', 'gld-stock-price');
+
+  const questions = [
+    'Do you think tariffs are good for the economy?',
+    'Should the government set price controls?',
+    'Do you believe minimum wage laws help low-income workers?',
+    'Is inflation always a monetary phenomenon?',
+    'Should businesses be subsidized to save jobs?',
+    'Does consumption drive economic growth?',
+    'Are public works projects the best way to reduce unemployment?',
+    'Do unions increase real wages for everyone?',
+    'Should the government bail out failing industries?',
+    'Does breaking windows help the economy by creating jobs?'
+  ];
+
+  function showRandomQuestion() {
+    const index = Math.floor(Date.now() / 600000) % questions.length;
+    const question = questions[index];
+    document.getElementById('econ-question').innerText = 'Before you scroll, answer this: ' + question;
+  }
+
+  showRandomQuestion();
 </script>
 
 </body>
