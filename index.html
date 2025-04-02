@@ -36,13 +36,14 @@
     
     /* Header/Navigation */
     header {
-      background-color: var(--secondary-color);
+      background-color: rgba(255, 255, 255, 0.9);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 100;
       padding: 1.5rem 0;
       border-bottom: 1px solid rgba(0,0,0,0.05);
+      backdrop-filter: blur(5px);
     }
     
     .header-content {
@@ -64,18 +65,101 @@
       display: flex;
       align-items: center;
       background-color: var(--secondary-color);
-      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 77, 77, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(0, 119, 204, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 207, 51, 0.05) 0%, transparent 60%);
+    }
+    
+    /* Abstract shapes */
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(255, 77, 77, 0.1), rgba(255, 207, 51, 0.1));
+      top: -100px;
+      right: -100px;
+      filter: blur(40px);
+    }
+    
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(0, 119, 204, 0.1), rgba(155, 81, 224, 0.1));
+      bottom: -50px;
+      left: -50px;
+      filter: blur(30px);
+    }
+    
+    /* Floating elements */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    
+    .floating-circle:nth-child(1) {
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent-color);
+      top: 15%;
+      left: 10%;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .floating-circle:nth-child(2) {
+      width: 40px;
+      height: 40px;
+      background-color: #0077cc;
+      top: 70%;
+      right: 15%;
+      animation: float 6s ease-in-out infinite 1s;
+    }
+    
+    .floating-circle:nth-child(3) {
+      width: 25px;
+      height: 25px;
+      background-color: #ffcf33;
+      bottom: 20%;
+      left: 30%;
+      animation: float 7s ease-in-out infinite 2s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      33% { transform: translateY(-15px) translateX(10px) rotate(5deg); }
+      66% { transform: translateY(10px) translateX(-15px) rotate(-5deg); }
     }
     
     .hero-content {
       max-width: 800px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 2.5rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
     
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      line-height: 1.2;
+      line-height: 1.3;
     }
     
     .hero p {
@@ -209,7 +293,11 @@
     
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+      }
+      
+      .hero-content {
+        padding: 1.5rem;
       }
       
       .footer-content {
@@ -236,8 +324,13 @@
 
   <main>
     <section class="hero">
+      <div class="hero-bg">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+      </div>
       <div class="container hero-content">
-        <h1>Economics Enthusiast</h1>
+        <h1>Welcome to my website that I built because I was bored and wanted to learn. I fundamentally believe humans can learn anything at any age and that is what gets me out of bed in the morning.</h1>
         <p>Building and optimizing business operations across public companies in New York City.</p>
       </div>
     </section>
