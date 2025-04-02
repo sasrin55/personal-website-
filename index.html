@@ -74,92 +74,132 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(255, 77, 77, 0.1) 0%, transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(0, 119, 204, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(255, 207, 51, 0.05) 0%, transparent 60%);
+      background: linear-gradient(120deg, rgba(255, 77, 77, 0.05) 0%, transparent 50%),
+                  linear-gradient(240deg, rgba(0, 119, 204, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(255, 207, 51, 0.03) 0%, transparent 70%);
     }
     
-    /* Abstract shapes */
+    /* Enhanced abstract shapes */
     .hero-bg::before {
       content: "";
       position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, rgba(255, 77, 77, 0.1), rgba(255, 207, 51, 0.1));
-      top: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: linear-gradient(45deg, rgba(255, 77, 77, 0.08), rgba(255, 207, 51, 0.08));
+      top: -200px;
       right: -100px;
       filter: blur(40px);
+      animation: morphShape 15s ease-in-out infinite;
     }
     
     .hero-bg::after {
       content: "";
       position: absolute;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(135deg, rgba(0, 119, 204, 0.1), rgba(155, 81, 224, 0.1));
-      bottom: -50px;
-      left: -50px;
-      filter: blur(30px);
+      width: 400px;
+      height: 400px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: linear-gradient(135deg, rgba(0, 119, 204, 0.08), rgba(155, 81, 224, 0.08));
+      bottom: -150px;
+      left: -100px;
+      filter: blur(40px);
+      animation: morphShape 18s ease-in-out infinite reverse;
     }
     
-    /* Floating elements */
-    .floating-circle {
+    @keyframes morphShape {
+      0%, 100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      }
+      25% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+      50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      }
+      75% {
+        border-radius: 60% 40% 50% 50% / 30% 60% 40% 70%;
+      }
+    }
+    
+    /* Enhanced floating elements */
+    .floating-element {
       position: absolute;
-      border-radius: 50%;
-      opacity: 0.2;
+      opacity: 0.15;
     }
     
-    .floating-circle:nth-child(1) {
-      width: 60px;
-      height: 60px;
-      background-color: var(--accent-color);
+    .floating-element:nth-child(1) {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--accent-color), #ff8080);
+      border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
       top: 15%;
       left: 10%;
-      animation: float 8s ease-in-out infinite;
+      animation: float 20s ease-in-out infinite, morphShape 15s ease-in-out infinite;
     }
     
-    .floating-circle:nth-child(2) {
-      width: 40px;
-      height: 40px;
-      background-color: #0077cc;
-      top: 70%;
+    .floating-element:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0077cc, #00a8ff);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      top: 60%;
       right: 15%;
-      animation: float 6s ease-in-out infinite 1s;
+      animation: float 15s ease-in-out infinite 1s, morphShape 10s ease-in-out infinite reverse;
     }
     
-    .floating-circle:nth-child(3) {
-      width: 25px;
-      height: 25px;
-      background-color: #ffcf33;
+    .floating-element:nth-child(3) {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #ffcf33, #ffeb99);
+      border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
       bottom: 20%;
-      left: 30%;
-      animation: float 7s ease-in-out infinite 2s;
+      left: 20%;
+      animation: float 25s ease-in-out infinite 2s, morphShape 20s ease-in-out infinite;
+    }
+    
+    .floating-element:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, rgba(155, 81, 224, 0.5), rgba(193, 148, 235, 0.5));
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      top: 30%;
+      right: 25%;
+      animation: float 18s ease-in-out infinite 3s, morphShape 12s ease-in-out infinite;
+    }
+    
+    .mesh-gradient {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+      opacity: 0.2;
+      mix-blend-mode: overlay;
     }
     
     @keyframes float {
       0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-      33% { transform: translateY(-15px) translateX(10px) rotate(5deg); }
-      66% { transform: translateY(10px) translateX(-15px) rotate(-5deg); }
+      25% { transform: translateY(-20px) translateX(15px) rotate(5deg); }
+      50% { transform: translateY(10px) translateX(-15px) rotate(-8deg); }
+      75% { transform: translateY(15px) translateX(8px) rotate(3deg); }
     }
     
     .hero-content {
       max-width: 800px;
       position: relative;
       z-index: 1;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.85);
       padding: 2.5rem;
       border-radius: 10px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
     }
     
     .hero h1 {
       font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      line-height: 1.3;
+      line-height: 1.4;
     }
     
     .hero p {
@@ -325,13 +365,15 @@
   <main>
     <section class="hero">
       <div class="hero-bg">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
+        <div class="mesh-gradient"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
       </div>
       <div class="container hero-content">
-        <h1>Welcome to my website that I built because I was bored and wanted to learn. I fundamentally believe humans can learn anything at any age and that is what gets me out of bed in the morning.</h1>
-        <p>Building and optimizing business operations across public companies in New York City.</p>
+        <h1>At the intersection of human potential and data-driven strategy lies the future I'm crafting—where curiosity never sleeps and limitations are merely temporary challenges.</h1>
+        <p>Transforming business operations through analytical precision and strategic vision across New York City's most dynamic companies.</p>
       </div>
     </section>
 
