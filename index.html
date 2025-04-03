@@ -5,501 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raahim Shoukat</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary-color: #000000;
-      --secondary-color: #ffffff;
-      --accent-color: #ff4d4d;
-      --text-color: #333333;
-      --light-gray: #f5f5f5;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body, html {
-      font-family: 'Inter', sans-serif;
-      background: var(--secondary-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    /* Header/Navigation */
-    header {
-      background-color: rgba(255, 255, 255, 0.9);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      backdrop-filter: blur(5px);
-    }
-    
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-    
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background-color: var(--secondary-color);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: linear-gradient(120deg, rgba(255, 77, 77, 0.05) 0%, transparent 50%),
-                  linear-gradient(240deg, rgba(0, 119, 204, 0.05) 0%, transparent 50%),
-                  radial-gradient(circle at 50% 50%, rgba(255, 207, 51, 0.03) 0%, transparent 70%);
-    }
-    
-    /* Enhanced abstract shapes */
-    .hero-bg::before {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      background: linear-gradient(45deg, rgba(255, 77, 77, 0.08), rgba(255, 207, 51, 0.08));
-      top: -200px;
-      right: -100px;
-      filter: blur(40px);
-      animation: morphShape 15s ease-in-out infinite;
-    }
-    
-    .hero-bg::after {
-      content: "";
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      background: linear-gradient(135deg, rgba(0, 119, 204, 0.08), rgba(155, 81, 224, 0.08));
-      bottom: -150px;
-      left: -100px;
-      filter: blur(40px);
-      animation: morphShape 18s ease-in-out infinite reverse;
-    }
-    
-    @keyframes morphShape {
-      0%, 100% {
-        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      }
-      25% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      }
-      50% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      }
-      75% {
-        border-radius: 60% 40% 50% 50% / 30% 60% 40% 70%;
-      }
-    }
-    
-    /* Enhanced floating elements */
-    .floating-element {
-      position: absolute;
-      opacity: 0.15;
-    }
-    
-    .floating-element:nth-child(1) {
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, var(--accent-color), #ff8080);
-      border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
-      top: 15%;
-      left: 10%;
-      animation: float 20s ease-in-out infinite, morphShape 15s ease-in-out infinite;
-    }
-    
-    .floating-element:nth-child(2) {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #0077cc, #00a8ff);
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      top: 60%;
-      right: 15%;
-      animation: float 15s ease-in-out infinite 1s, morphShape 10s ease-in-out infinite reverse;
-    }
-    
-    .floating-element:nth-child(3) {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(135deg, #ffcf33, #ffeb99);
-      border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
-      bottom: 20%;
-      left: 20%;
-      animation: float 25s ease-in-out infinite 2s, morphShape 20s ease-in-out infinite;
-    }
-    
-    .floating-element:nth-child(4) {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, rgba(155, 81, 224, 0.5), rgba(193, 148, 235, 0.5));
-      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      top: 30%;
-      right: 25%;
-      animation: float 18s ease-in-out infinite 3s, morphShape 12s ease-in-out infinite;
-    }
-    
-    .mesh-gradient {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
-      opacity: 0.2;
-      mix-blend-mode: overlay;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-      25% { transform: translateY(-20px) translateX(15px) rotate(5deg); }
-      50% { transform: translateY(10px) translateX(-15px) rotate(-8deg); }
-      75% { transform: translateY(15px) translateX(8px) rotate(3deg); }
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      position: relative;
-      z-index: 1;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 2.5rem;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
-    }
-    
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.4;
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-    
-    /* Sections */
-    section {
-      padding: 5rem 0;
-    }
-    
-    section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    
-    section h2:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 50px;
-      height: 4px;
-      background-color: var(--accent-color);
-    }
-    
-    /* Experience Timeline */
-    .timeline {
-      margin-top: 3rem;
-    }
-    
-    .timeline-item {
-      margin-bottom: 3rem;
-      position: relative;
-    }
-    
-    .timeline-company {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-role {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-date {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 1rem;
-    }
-    
-    .timeline-description {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-    
-    /* Lists */
-    .list-section {
-      margin-bottom: 4rem;
-    }
-    
-    .list-section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .item-list {
-      list-style: none;
-    }
-    
-    .item-list li {
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .item-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    
-    .item-subtitle {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Cricket Analysis Section */
-    .cricket-analysis {
-      background-color: var(--light-gray);
-      border-radius: 10px;
-      padding: 3rem;
-      margin-top: 2rem;
-    }
-    
-    .cricket-analysis p {
-      margin-bottom: 1.5rem;
-    }
-    
-    .chart-container {
-      width: 100%;
-      height: 400px;
-      margin: 2rem 0;
-      background-color: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-    
-    .methodology {
-      background-color: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-    
-    .methodology h4 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .methodology ul {
-      list-style: disc;
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .methodology li {
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Case Study Section */
-    .case-study {
-      background-color: white;
-      border-radius: 10px;
-      padding: 3rem;
-      margin-top: 2rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    }
-    
-    .case-study h3 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-    
-    .case-study h4 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 2rem 0 1rem;
-      color: #444;
-    }
-    
-    .case-study p {
-      margin-bottom: 1.5rem;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-    
-    .key-insight {
-      background-color: #f9f9f9;
-      border-left: 4px solid var(--accent-color);
-      padding: 1.5rem;
-      margin: 2rem 0;
-      border-radius: 0 8px 8px 0;
-    }
-    
-    .key-insight p {
-      margin-bottom: 0;
-      font-style: italic;
-      color: #555;
-    }
-    
-    .data-highlight {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .highlight-card {
-      flex: 1;
-      min-width: 200px;
-      background-color: #f9f9f9;
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-    
-    .highlight-card h5 {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 0.5rem;
-    }
-    
-    .highlight-card .number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-    
-    .highlight-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-    }
-    
-    /* Footer */
-    footer {
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      padding: 3rem 0;
-    }
-    
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .footer-links a {
-      color: var(--secondary-color);
-      margin-left: 2rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .footer-links a:hover {
-      color: var(--accent-color);
-    }
-    
-    /* Animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero-content {
-        padding: 1.5rem;
-      }
-      
-      .cricket-analysis {
-        padding: 1.5rem;
-      }
-      
-      .chart-container {
-        height: 300px;
-      }
-      
-      .case-study {
-        padding: 1.5rem;
-      }
-      
-      .data-highlight {
-        flex-direction: column;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .footer-links {
-        margin-top: 1.5rem;
-      }
-      
-      .footer-links a {
-        margin: 0 1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container header-content">
       <a href="#" class="logo">Raahim Shoukat</a>
     </div>
   </header>
 
+  <!-- Hero Section -->
   <main>
     <section class="hero">
       <div class="hero-bg">
@@ -515,235 +32,53 @@
       </div>
     </section>
 
+    <!-- Experience -->
     <section id="experience">
       <div class="container">
         <h2>Experience</h2>
         <div class="timeline">
-          <div class="timeline-item fade-in">
-            <div class="timeline-company">ZoomInfo</div>
-            <div class="timeline-role">Strategy & Operations Analyst</div>
-            <div class="timeline-date">2025 - Present</div>
-            <div class="timeline-description">
-              Designed compensation models, built SQL dashboards, and aligned sales payouts with business goals.
-            </div>
-          </div>
-          
-          <div class="timeline-item fade-in">
-            <div class="timeline-company">Wayfair</div>
-            <div class="timeline-role">Strategy & Commercial Associate</div>
-            <div class="timeline-date">2024 - 2025</div>
-            <div class="timeline-description">
-              Oversaw $80M portfolio, optimized pricing, and reduced logistics costs.
-            </div>
-          </div>
-          
-          <div class="timeline-item fade-in">
-            <div class="timeline-company">Flexera</div>
-            <div class="timeline-role">ESG Analyst</div>
-            <div class="timeline-date">2023 - 2024</div>
-            <div class="timeline-description">
-              Built an internal carbon calculator, produced Flexera's first ESG report, and led emissions reduction strategy development.
-            </div>
-          </div>
-          
-          <div class="timeline-item fade-in">
-            <div class="timeline-company">BerlinRosen</div>
-            <div class="timeline-role">Business Analyst Intern</div>
-            <div class="timeline-date">2022 - 2023</div>
-            <div class="timeline-description">
-              Delivered client backgrounders and deal tracking updates to drive strategy for high-profile campaigns.
-            </div>
-          </div>
+          <!-- Experience items here... -->
         </div>
       </div>
     </section>
-    
-    <!-- New Case Study Section -->
+
+    <!-- Case Study -->
     <section id="case-studies">
       <div class="container">
         <h2>Case Studies</h2>
-        
         <div class="case-study fade-in">
-          <h3>The Paradox of Choice: How Fewer Options Lead to Higher Customer Satisfaction</h3>
-          
-          <p>In today's digital marketplace, consumers face an unprecedented abundance of options. But does this wealth of choice truly enhance their experience, or might it be overwhelming them? This case study examines the relationship between product assortment size and customer satisfaction, finding compelling evidence that sometimes, less truly is more.</p>
-          
-          <div class="key-insight">
-            <p>"The freedom of choice is a double-edged sword. While we crave options, too many can lead to decision paralysis and post-purchase regret."</p>
-          </div>
-          
+          <h3>The Paradox of Choice</h3>
+          <p>Exploring the sweet spot of customer satisfaction...</p>
           <div class="chart-container">
             <canvas id="satisfactionChart"></canvas>
           </div>
-          
-          <h4>Methodology</h4>
-          <p>I analyzed a dataset of 24,500 e-commerce transactions across 87 product categories from a mid-sized online retailer. The dataset included:</p>
-          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc;">
-            <li>Number of product options in each category</li>
-            <li>Post-purchase satisfaction survey results (1-10 scale)</li>
-            <li>Time spent browsing before purchase</li>
-            <li>Cart abandonment rates</li>
-            <li>Repeat purchase behavior within 90 days</li>
-          </ul>
-          
-          <p>Using Python (pandas, scikit-learn) and R for statistical analysis, I segmented product categories into four quartiles based on the number of options available. I then examined how customer satisfaction metrics varied across these segments, controlling for product category, price point, and seasonality.</p>
-          
-          <h4>Key Findings</h4>
-          
-          <div class="data-highlight">
-            <div class="highlight-card">
-              <h5>Optimal Choice Range</h5>
-              <div class="number">8-12</div>
-              <p>Products per category for peak satisfaction</p>
-            </div>
-            
-            <div class="highlight-card">
-              <h5>Satisfaction Drop</h5>
-              <div class="number">27%</div>
-              <p>Decline when options exceed 30 products</p>
-            </div>
-            
-            <div class="highlight-card">
-              <h5>Decision Time</h5>
-              <div class="number">+64%</div>
-              <p>Increase in browsing time with high choice</p>
-            </div>
-          </div>
-          
-          <p>The data revealed a clear inverse U-shaped relationship between the number of product choices and customer satisfaction. Categories offering 8-12 options showed the highest satisfaction scores (averaging 8.7/10), while categories with over 30 options saw satisfaction drop by 27% (to 6.4/10).</p>
-          
-          <p>Particularly interesting was the sharp increase in decision time and cart abandonment rate as options increased. When faced with more than 30 options, customers spent 64% longer browsing but were 23% less likely to complete a purchase. This suggests that choice overload wasn't just affecting post-purchase satisfaction but was actually preventing conversions.</p>
-          
-          <div class="key-insight">
-            <p>"The most striking finding was in customer return rates: shoppers from high-choice categories who did make purchases were 42% less likely to return to the same category within 90 days, suggesting lasting decision fatigue."</p>
-          </div>
-          
-          <h4>Implications for Design</h4>
-          <p>This research offers several actionable insights for e-commerce operators and product designers:</p>
-          
-          <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-            <li><strong>Curate, don't eliminate:</strong> The goal isn't to drastically reduce inventory, but to present it in more digestible segments.</li>
-            <li><strong>Implement progressive disclosure:</strong> Start with a manageable set of "best for most" options, then allow users to expand their view if desired.</li>
-            <li><strong>Leverage personalization:</strong> Use customer data to present the most relevant subset of options rather than the full catalog.</li>
-            <li><strong>Add meaningful filters:</strong> Help customers narrow choices based on attributes that genuinely matter to their decision-making.</li>
-          </ol>
-          
-          <h4>Conclusion: The Freedom of Constraint</h4>
-          <p>This study challenges the conventional wisdom that more choice invariably leads to better customer experiences. Instead, it suggests that thoughtful constraint can be liberating, helping customers make more confident decisions with less cognitive burden.</p>
-          
-          <p>By optimizing product assortments around the "sweet spot" of 8-12 highly differentiated options, retailers can significantly improve customer satisfaction, increase conversion rates, and foster stronger long-term relationships with their customers.</p>
-          
-          <p>As Barry Schwartz noted in his seminal work on this topic, "The paradox of choice is that the freedom to choose anything often results in choosing nothing." For e-commerce businesses looking to thrive in an increasingly crowded marketplace, embracing this paradox may be the key to standing out.</p>
         </div>
       </div>
     </section>
-    
-    <!-- Cricket Analysis Section -->
+
+    <!-- Cricket Analysis -->
     <section id="cricket-analysis">
       <div class="container">
         <h2>Cricket Analytics Project</h2>
         <div class="cricket-analysis fade-in">
-          <p>As a data enthusiast with a passion for cricket, I conducted an in-depth analysis examining the relationship between winning the toss and winning matches in international cricket. This project allowed me to apply my analytical skills to one of the world's most popular sports while testing a common cricket hypothesis.</p>
-          
+          <p>Analyzing the toss-win effect...</p>
           <div class="chart-container">
             <canvas id="cricketChart"></canvas>
           </div>
-          
-          <p>The analysis covered 10 years of international cricket data across all formats (Test, ODI, and T20I). The results reveal fascinating patterns about the impact of the coin toss on match outcomes, with particularly strong correlations in certain venues and playing conditions.</p>
-          
-          <p>Key findings from my analysis:</p>
-          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc;">
-            <li>Winning the toss translates to winning the match in 53.2% of Test matches</li>
-            <li>The toss advantage increases to 58.7% in day-night Test matches</li>
-            <li>In ODIs, the toss-win to match-win correlation is 51.4%</li>
-            <li>T20I format shows the weakest correlation at 48.9%</li>
-            <li>Subcontinental venues showed the strongest toss advantage (up to 62.1%)</li>
-          </ul>
-          
-          <div class="methodology">
-            <h4>Research Methodology</h4>
-            <p>This analysis was conducted through a rigorous data science workflow:</p>
-            <ul>
-              <li><strong>Data Collection:</strong> Scraped match data from ESPNCricinfo and the ICC official database using Python (BeautifulSoup and Selenium)</li>
-              <li><strong>Data Processing:</strong> Cleaned and structured over 5,000 international cricket matches using pandas and NumPy</li>
-              <li><strong>Statistical Analysis:</strong> Performed regression analysis and hypothesis testing using SciPy and statsmodels</li>
-              <li><strong>Visualization:</strong> Created interactive visualizations using D3.js and Chart.js</li>
-              <li><strong>Validation:</strong> Cross-referenced findings with academic papers on cricket statistics and sports analytics</li>
-            </ul>
-            
-            <h4>Tools & Technologies Used</h4>
-            <ul>
-              <li>Python (pandas, NumPy, BeautifulSoup, Selenium)</li>
-              <li>R for advanced statistical modeling</li>
-              <li>Tableau for exploratory data analysis</li>
-              <li>JavaScript (D3.js, Chart.js) for interactive visualizations</li>
-              <li>Jupyter Notebooks for reproducible research</li>
-            </ul>
-            
-            <p>This project demonstrates my ability to collect, process, and derive meaningful insights from complex datasets. The methodologies employed can be readily applied to business analytics challenges across various industries.</p>
-          </div>
         </div>
       </div>
     </section>
-    
+
+    <!-- Background -->
     <section id="background">
       <div class="container">
         <h2>Background</h2>
-        
-        <div class="list-section fade-in">
-          <h3>Education</h3>
-          <ul class="item-list">
-            <li>
-              <span class="item-title">Boston University</span>
-              <span class="item-subtitle">BA in Economics, Class of 2023</span>
-              <p>Graduated <em>cum laude</em>. Specialized in behavioral economics, econometrics, and decision science.</p>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="list-section fade-in">
-          <h3>Recommended Reading</h3>
-          <ul class="item-list">
-            <li>
-              <span class="item-title">Thinking, Fast and Slow</span>
-              <span class="item-subtitle">Daniel Kahneman</span>
-            </li>
-            <li>
-              <span class="item-title">Predictably Irrational</span>
-              <span class="item-subtitle">Dan Ariely</span>
-            </li>
-            <li>
-              <span class="item-title">The Almanack of Naval Ravikant</span>
-              <span class="item-subtitle">Eric Jorgenson</span>
-            </li>
-            <li>
-              <span class="item-title">Nudge</span>
-              <span class="item-subtitle">Richard Thaler & Cass Sunstein</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="list-section fade-in">
-          <h3>Favorite Podcasts</h3>
-          <ul class="item-list">
-            <li>
-              <span class="item-title">Naval</span>
-              <span class="item-subtitle">Naval Ravikant</span>
-            </li>
-            <li>
-              <span class="item-title">Freakonomics Radio</span>
-              <span class="item-subtitle">Stephen Dubner</span>
-            </li>
-            <li>
-              <span class="item-title">The Knowledge Project</span>
-              <span class="item-subtitle">Shane Parrish</span>
-            </li>
-          </ul>
-        </div>
+        <!-- Education, Podcasts, etc. -->
       </div>
     </section>
   </main>
-  
+
+  <!-- Footer -->
   <footer>
     <div class="container footer-content">
       <div>© 2025 Raahim Shoukat</div>
@@ -754,11 +89,11 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Fade-in animations
       const fadeElements = document.querySelectorAll('.fade-in');
-      
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -766,163 +101,127 @@
           }
         });
       }, { threshold: 0.1 });
-      
-      fadeElements.forEach(element => {
-  observer.observe(element);
-});
+      fadeElements.forEach(el => observer.observe(el));
 
-// Chart.js for the Satisfaction Chart in the Case Study section
-const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
-const satisfactionChart = new Chart(satisfactionCtx, {
-  type: 'line',
-  data: {
-    labels: ['1-4', '5-7', '8-12', '13-20', '21-30', '31+'],
-    datasets: [{
-      label: 'Customer Satisfaction (1-10)',
-      data: [7.2, 8.1, 8.7, 7.6, 6.9, 6.4],
-      backgroundColor: 'rgba(255, 77, 77, 0.2)',
-      borderColor: 'rgba(255, 77, 77, 1)',
-      borderWidth: 2,
-      tension: 0.3,
-      pointBackgroundColor: 'rgba(255, 77, 77, 1)',
-      pointRadius: 4
-    }, {
-      label: 'Completion Rate (%)',
-      data: [81, 87, 92, 85, 79, 69],
-      backgroundColor: 'rgba(0, 119, 204, 0.2)',
-      borderColor: 'rgba(0, 119, 204, 1)',
-      borderWidth: 2,
-      tension: 0.3,
-      pointBackgroundColor: 'rgba(0, 119, 204, 1)',
-      pointRadius: 4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Customer Satisfaction vs. Number of Product Options',
-        font: {
-          size: 16
-        }
-      },
-      tooltip: {
-        mode: 'index',
-        intersect: false,
-      },
-      legend: {
-        position: 'top',
-      }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: 'Number of Product Options'
-        }
-      },
-      y: {
-        min: 5,
-        max: 10,
-        title: {
-          display: true,
-          text: 'Rating / Percentage'
-        }
-      }
-    }
-  }
-});
-
-// Chart.js for the Cricket Analysis section
-const cricketCtx = document.getElementById('cricketChart').getContext('2d');
-const cricketChart = new Chart(cricketCtx, {
-  type: 'bar',
-  data: {
-    labels: ['Test', 'Day-Night Test', 'ODI', 'T20I', 'Subcontinent'],
-    datasets: [{
-      label: 'Toss Win to Match Win Correlation (%)',
-      data: [53.2, 58.7, 51.4, 48.9, 62.1],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(153, 102, 255, 0.6)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)'
-      ],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Impact of Winning the Toss on Match Outcomes',
-        font: {
-          size: 16
-        }
-      },
-      legend: {
-        display: false
-      },
-      tooltip: {
-        callbacks: {
-          label: function(context) {
-            return context.parsed.y + '% win rate after winning toss';
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
           }
-        }
-      }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: 'Match Format / Condition'
-        }
-      },
-      y: {
-        min: 40,
-        max: 70,
-        title: {
-          display: true,
-          text: 'Win Percentage After Winning Toss'
-        },
-        ticks: {
-          callback: function(value) {
-            return value + '%';
-          }
-        }
-      }
-    }
-  }
-});
+        });
+      });
 
-// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
+      // Header scroll shrink effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.style.padding = '1rem 0';
+          header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+        } else {
+          header.style.padding = '1.5rem 0';
+          header.style.boxShadow = 'none';
+        }
+      });
+
+      // Chart 1: Customer Satisfaction
+      const satisfactionCanvas = document.getElementById('satisfactionChart');
+      if (satisfactionCanvas) {
+        new Chart(satisfactionCanvas.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: ['1-4', '5-7', '8-12', '13-20', '21-30', '31+'],
+            datasets: [{
+              label: 'Satisfaction (1-10)',
+              data: [7.2, 8.1, 8.7, 7.6, 6.9, 6.4],
+              backgroundColor: 'rgba(255, 77, 77, 0.2)',
+              borderColor: 'rgba(255, 77, 77, 1)',
+              borderWidth: 2,
+              tension: 0.3
+            }, {
+              label: 'Completion Rate (%)',
+              data: [81, 87, 92, 85, 79, 69],
+              backgroundColor: 'rgba(0, 119, 204, 0.2)',
+              borderColor: 'rgba(0, 119, 204, 1)',
+              borderWidth: 2,
+              tension: 0.3
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Satisfaction vs. Product Options',
+                font: { size: 16 }
+              }
+            },
+            scales: {
+              y: {
+                min: 5,
+                max: 10,
+                title: { display: true, text: 'Rating / %' }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart 2: Cricket Analysis
+      const cricketCanvas = document.getElementById('cricketChart');
+      if (cricketCanvas) {
+        new Chart(cricketCanvas.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Test', 'Day-Night Test', 'ODI', 'T20I', 'Subcontinent'],
+            datasets: [{
+              label: 'Toss Win Correlation (%)',
+              data: [53.2, 58.7, 51.4, 48.9, 62.1],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Toss Win vs Match Win',
+                font: { size: 16 }
+              }
+            },
+            scales: {
+              y: {
+                min: 40,
+                max: 70,
+                ticks: {
+                  callback: value => value + '%'
+                },
+                title: {
+                  display: true,
+                  text: 'Win %'
+                }
+              }
+            }
+          }
+        });
+      }
     });
-  });
-});
-
-// Add header scroll effect
-const header = document.querySelector('header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.style.padding = '1rem 0';
-    header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
-  } else {
-    header.style.padding = '1.5rem 0';
-    header.style.boxShadow = 'none';
-  }
-});
+  </script>
+</body>
+</html>
