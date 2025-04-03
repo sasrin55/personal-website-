@@ -120,11 +120,24 @@
       padding-bottom: 80px;
       background-color: #f5f7fa;
       position: relative;
+      overflow: hidden;
     }
     
     .hero-content {
       position: relative;
       z-index: 1;
+    }
+    
+    .paint-mark {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 45%;
+      height: 65%;
+      background-color: rgba(46, 139, 87, 0.1);
+      clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+      z-index: 0;
     }
     
     .hero h1 {
@@ -454,6 +467,7 @@
   <!-- Hero Section -->
   <main>
     <section class="hero">
+      <div class="paint-mark"></div>
       <div class="container hero-content">
         <h1>At the intersection of human potential and data-driven strategy lies the future I'm crafting.</h1>
         <p>Transforming business operations through analytical precision and strategic vision across New York City's most dynamic companies.</p>
