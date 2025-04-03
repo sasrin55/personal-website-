@@ -1,18 +1,4 @@
-.nyc-clock {
-        font-size: 0.9rem;
-      }
-
-      .time {
-        font-size: 1rem;
-      }
-
-      .date {
-        font-size: 0.8rem;
-      }
-      
-      .timezone {
-        font-size: 0.7rem;
-      }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -45,17 +31,14 @@
     header {
       padding: 1.5rem 0;
       position: fixed;
-      width: 100%;
-      top: 10px;
-      left: 0;
+      width: 98%;
+      top: 15px;
+      left: 1%;
       z-index: 1000;
       transition: all 0.3s ease;
       background-color: rgba(255, 255, 255, 0.95);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
-      margin: 0 auto;
-      width: 98%;
-      left: 1%;
     }
     
     .header-content {
@@ -78,19 +61,18 @@
     
     .age-counter {
       margin-left: 15px;
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       color: #2e8b57;
       display: flex;
       flex-direction: column;
     }
     
     .age-label {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: #4a5568;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
-
-    /* NYC Clock Styles */
+    
     .nyc-clock {
       display: flex;
       flex-direction: column;
@@ -116,16 +98,11 @@
     
     /* Hero Section */
     .hero {
-      padding-top: 120px;
-      padding-bottom: 80px;
+      padding-top: 150px;
+      padding-bottom: 100px;
       background-color: #f5f7fa;
       position: relative;
       overflow: hidden;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
     }
     
     .paint-mark {
@@ -138,6 +115,11 @@
       background-color: rgba(46, 139, 87, 0.1);
       clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
       z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
     
     .hero h1 {
@@ -158,7 +140,7 @@
     
     /* Sections */
     section {
-      padding: 80px 0;
+      padding: 100px 0;
       position: relative;
     }
     
@@ -316,8 +298,6 @@
     .data-table tr:hover {
       background-color: #f9f9f9;
     }
-
-
     
     /* Animations */
     .fade-in {
@@ -432,11 +412,23 @@
       .age-counter {
         margin-left: 0;
         margin-top: 5px;
-        font-size: 0.8rem;
+        font-size: 1rem;
       }
       
       .age-label {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
+      }
+      
+      .nyc-clock {
+        font-size: 0.9rem;
+      }
+
+      .time {
+        font-size: 1rem;
+      }
+
+      .date {
+        font-size: 0.8rem;
       }
       
       .timezone {
@@ -597,8 +589,6 @@
               <li>Create curated collections for different user segments based on demographics and behavior patterns</li>
             </ol>
           </div>
-          
-
         </div>
         
         <!-- Social Media Engagement Decay -->
@@ -697,8 +687,6 @@
               <li>Content recycling strategy: Repurpose evergreen content based on platform-specific half-lives</li>
             </ol>
           </div>
-          
-
         </div>
         
         <!-- Cricket Analysis -->
@@ -811,8 +799,6 @@
               <li>Create a composite "environmental advantage" metric combining toss outcome, venue, and conditions</li>
             </ol>
           </div>
-          
-
         </div>
       </div>
     </section>
@@ -853,7 +839,9 @@
         const ageInSeconds = Math.floor((now - birthDate) / 1000);
         
         const ageElement = document.getElementById('age-seconds');
-        ageElement.textContent = ageInSeconds.toLocaleString();
+        if (ageElement) {
+          ageElement.textContent = ageInSeconds.toLocaleString();
+        }
       }
       
       // Update age counter immediately and then every second
@@ -883,8 +871,12 @@
         const timeElement = document.getElementById('nyc-time');
         const dateElement = document.getElementById('nyc-date');
         
-        timeElement.textContent = now.toLocaleTimeString('en-US', options);
-        dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+        if (timeElement) {
+          timeElement.textContent = now.toLocaleTimeString('en-US', options);
+        }
+        if (dateElement) {
+          dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
       }
 
       // Update the clock immediately and then every second
@@ -918,20 +910,18 @@
       window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
           header.style.padding = '1rem 0';
-          header.style.top = '5px';
+          header.style.top = '10px';
         } else {
           header.style.padding = '1.5rem 0';
-          header.style.top = '10px';
+          header.style.top = '15px';
         }
       });
-
-                // Only keep necessary chart initialization
-          
-          // Chart 1: Simplified Customer Satisfaction
-          const satisfactionCanvas = document.getElementById('satisfactionChart');
-          if (satisfactionCanvas) {
-            new Chart(satisfactionCanvas.getContext('2d'), {
-          type: 'line',
+      
+      // Chart 1: Simplified Customer Satisfaction
+      const satisfactionCanvas = document.getElementById('satisfactionChart');
+      if (satisfactionCanvas) {
+        new Chart(satisfactionCanvas.getContext('2d'), {
+          type: 'bar',
           data: {
             labels: ['1-4', '5-7', '8-12', '13-20', '21-30', '31+'],
             datasets: [{
@@ -947,7 +937,7 @@
             plugins: {
               title: {
                 display: true,
-                text: 'Satisfaction & Completion vs. Product Options',
+                text: 'Customer Satisfaction by Product Options',
                 font: { size: 16, weight: 'bold' },
                 color: '#141b4d'
               },
@@ -958,11 +948,7 @@
                     if (label) {
                       label += ': ';
                     }
-                    if (context.datasetIndex === 0) {
-                      label += context.raw + '/10';
-                    } else {
-                      label += context.raw + '%';
-                    }
+                    label += context.raw + '/10';
                     return label;
                   }
                 }
@@ -1018,7 +1004,7 @@
             plugins: {
               title: {
                 display: true,
-                text: 'Conversion Funnel Comparison',
+                text: 'Conversion Funnel - Optimal Product Range',
                 font: { size: 16, weight: 'bold' },
                 color: '#141b4d'
               }
@@ -1037,57 +1023,8 @@
           }
         });
       }
-
-      // Chart 3: Customer Segmentation
-      const segmentationCanvas = document.getElementById('segmentationChart');
-      if (segmentationCanvas) {
-        new Chart(segmentationCanvas.getContext('2d'), {
-          type: 'radar',
-          data: {
-            labels: ['Browsers', 'First-time', 'Repeat', 'Loyal', 'High-value'],
-            datasets: [
-              {
-                label: '8-12 Options',
-                data: [68, 82, 91, 94, 87],
-                backgroundColor: 'rgba(46, 139, 87, 0.2)',
-                borderColor: 'rgba(46, 139, 87, 0.8)',
-                borderWidth: 2,
-                pointBackgroundColor: 'rgba(46, 139, 87, 1)'
-              },
-              {
-                label: '31+ Options',
-                data: [42, 51, 64, 72, 80],
-                backgroundColor: 'rgba(220, 53, 69, 0.2)',
-                borderColor: 'rgba(220, 53, 69, 0.8)',
-                borderWidth: 2,
-                pointBackgroundColor: 'rgba(220, 53, 69, 1)'
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: 'Segment Performance',
-                font: { size: 16, weight: 'bold' },
-                color: '#141b4d'
-              }
-            },
-            scales: {
-              r: {
-                min: 0,
-                max: 100,
-                ticks: {
-                  stepSize: 20
-                }
-              }
-            }
-          }
-        });
-      }
-
-      // Chart 4: Engagement Rate Chart
+      
+      // Chart 3: Platform Half-Life
       const engagementCanvas = document.getElementById('engagementChart');
       if (engagementCanvas) {
         new Chart(engagementCanvas.getContext('2d'), {
@@ -1129,8 +1066,8 @@
           }
         });
       }
-
-      // Chart 5: Time of Day Chart
+      
+      // Chart 4: Platform Peak Times
       const timeOfDayCanvas = document.getElementById('timeOfDayChart');
       if (timeOfDayCanvas) {
         new Chart(timeOfDayCanvas.getContext('2d'), {
@@ -1181,62 +1118,8 @@
           }
         });
       }
-
-      // Chart 6: Content Type Chart
-      const contentTypeCanvas = document.getElementById('contentTypeChart');
-      if (contentTypeCanvas) {
-        new Chart(contentTypeCanvas.getContext('2d'), {
-          type: 'radar',
-          data: {
-            labels: ['Text Only', 'Single Image', 'Carousel', 'Video', 'Live', 'Interactive'],
-            datasets: [
-              {
-                label: 'Instagram',
-                data: [42, 87, 100, 92, 76, 68],
-                backgroundColor: 'rgba(225, 48, 108, 0.2)',
-                borderColor: 'rgba(225, 48, 108, 0.8)',
-                borderWidth: 2
-              },
-              {
-                label: 'Twitter',
-                data: [76, 89, 64, 71, 49, 62],
-                backgroundColor: 'rgba(29, 161, 242, 0.2)',
-                borderColor: 'rgba(29, 161, 242, 0.8)',
-                borderWidth: 2
-              },
-              {
-                label: 'LinkedIn',
-                data: [92, 78, 63, 82, 41, 58],
-                backgroundColor: 'rgba(0, 119, 181, 0.2)',
-                borderColor: 'rgba(0, 119, 181, 0.8)',
-                borderWidth: 2
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: 'Content Type Performance',
-                font: { size: 16, weight: 'bold' },
-                color: '#141b4d'
-              }
-            },
-            scales: {
-              r: {
-                min: 0,
-                max: 100,
-                ticks: {
-                  stepSize: 20
-                }
-              }
-            }
-          }
-        });
-      }
-
-      // Chart 7: Cricket Toss Analysis Chart
+      
+      // Chart 5: Cricket Win Rate
       const cricketCanvas = document.getElementById('cricketChart');
       if (cricketCanvas) {
         new Chart(cricketCanvas.getContext('2d'), {
@@ -1260,7 +1143,7 @@
             plugins: {
               title: {
                 display: true,
-                text: 'Win Rate After Winning Toss',
+                text: 'Win Rate After Winning Toss by Format',
                 font: { size: 16, weight: 'bold' },
                 color: '#141b4d'
               }
@@ -1272,15 +1155,15 @@
                   text: 'Win Percentage (%)',
                   font: { weight: 'bold' }
                 },
-                min: 0,
-                max: 100
+                min: 40,
+                max: 70
               }
             }
           }
         });
       }
-
-      // Chart 8: Team Comparison Chart
+      
+      // Chart 6: Team Advantage
       const teamComparisonCanvas = document.getElementById('teamComparisonChart');
       if (teamComparisonCanvas) {
         new Chart(teamComparisonCanvas.getContext('2d'), {
@@ -1316,46 +1199,7 @@
                   font: { weight: 'bold' }
                 },
                 min: 0,
-                max: 20
-              }
-            }
-          }
-        });
-      }
-
-      // Chart 9: Pitch Conditions Chart
-      const pitchConditionsCanvas = document.getElementById('pitchConditionsChart');
-      if (pitchConditionsCanvas) {
-        new Chart(pitchConditionsCanvas.getContext('2d'), {
-          type: 'pie',
-          data: {
-            labels: ['Spin-friendly', 'Pace-friendly', 'Balanced', 'Deteriorating', 'Rain-affected'],
-            datasets: [{
-              data: [18.5, 12.3, 7.2, 21.6, 14.8],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(153, 102, 255, 0.7)'
-              ]
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: 'Toss Advantage by Pitch Type',
-                font: { size: 16, weight: 'bold' },
-                color: '#141b4d'
-              },
-              tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    return context.label + ': ' + context.raw + '% win advantage';
-                  }
-                }
+                max: 16
               }
             }
           }
