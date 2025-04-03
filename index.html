@@ -274,6 +274,20 @@
           </p>
         </div>
         
+        <!-- Social Media Engagement Decay -->
+        <div class="case-study fade-in">
+          <h3>Social Media Engagement Decay</h3>
+          <p>Analyzing how engagement with posts declines over time across platforms and identifying the optimal posting strategies for maximum reach and interaction.</p>
+          
+          <div class="chart-container">
+            <canvas id="engagementChart"></canvas>
+          </div>
+          
+          <p class="insight-text">
+            Key finding: Platform engagement half-lives vary significantly (Instagram: 21 hours, Twitter: 4 hours, LinkedIn: 48 hours), with content type being a stronger predictor of longevity than posting time.
+          </p>
+        </div>
+        
         <!-- Cricket Analysis -->
         <div class="case-study fade-in">
           <h3>Cricket Analytics Project</h3>
@@ -454,7 +468,93 @@
         });
       }
 
-      // Chart 2: Cricket Analysis
+      // Chart 2: Social Media Engagement Decay
+      const engagementCanvas = document.getElementById('engagementChart');
+      if (engagementCanvas) {
+        new Chart(engagementCanvas.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: ['0h', '4h', '8h', '12h', '24h', '36h', '48h', '72h'],
+            datasets: [{
+              label: 'Instagram',
+              data: [100, 67, 48, 31, 15, 8, 5, 2],
+              backgroundColor: 'rgba(188, 42, 141, 0.2)',
+              borderColor: 'rgba(188, 42, 141, 1)',
+              borderWidth: 3,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: 'rgba(188, 42, 141, 1)'
+            }, {
+              label: 'Twitter',
+              data: [100, 31, 15, 7, 3, 1, 0, 0],
+              backgroundColor: 'rgba(29, 161, 242, 0.2)',
+              borderColor: 'rgba(29, 161, 242, 1)',
+              borderWidth: 3,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: 'rgba(29, 161, 242, 1)'
+            }, {
+              label: 'LinkedIn',
+              data: [100, 83, 71, 62, 46, 32, 22, 10],
+              backgroundColor: 'rgba(0, 119, 181, 0.2)',
+              borderColor: 'rgba(0, 119, 181, 1)',
+              borderWidth: 3,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: 'rgba(0, 119, 181, 1)'
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Engagement Decay By Platform',
+                font: { size: 16, weight: 'bold' },
+                color: '#141b4d'
+              },
+              legend: {
+                position: 'top',
+                labels: {
+                  font: { size: 13 },
+                  usePointStyle: true,
+                  padding: 20
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.dataset.label + ': ' + context.raw + '% of initial engagement';
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                title: {
+                  display: true,
+                  text: 'Engagement Retention (%)',
+                  font: { weight: 'bold' }
+                },
+                min: 0,
+                max: 100,
+                ticks: {
+                  callback: value => value + '%'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Hours Since Posting',
+                  font: { weight: 'bold' }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart 3: Cricket Analysis
       const cricketCanvas = document.getElementById('cricketChart');
       if (cricketCanvas) {
         new Chart(cricketCanvas.getContext('2d'), {
