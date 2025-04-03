@@ -768,10 +768,161 @@
       }, { threshold: 0.1 });
       
       fadeElements.forEach(element => {
-        observer.observe(element);
-      });
-      
-      // Cricket Chart
-      const cricketCtx = document.getElementById('cricketChart').getContext('2d');
-      const cricketChart = new Chart(cricketCtx, {
-        type: 'bar',
+  observer.observe(element);
+});
+
+// Chart.js for the Satisfaction Chart in the Case Study section
+const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+const satisfactionChart = new Chart(satisfactionCtx, {
+  type: 'line',
+  data: {
+    labels: ['1-4', '5-7', '8-12', '13-20', '21-30', '31+'],
+    datasets: [{
+      label: 'Customer Satisfaction (1-10)',
+      data: [7.2, 8.1, 8.7, 7.6, 6.9, 6.4],
+      backgroundColor: 'rgba(255, 77, 77, 0.2)',
+      borderColor: 'rgba(255, 77, 77, 1)',
+      borderWidth: 2,
+      tension: 0.3,
+      pointBackgroundColor: 'rgba(255, 77, 77, 1)',
+      pointRadius: 4
+    }, {
+      label: 'Completion Rate (%)',
+      data: [81, 87, 92, 85, 79, 69],
+      backgroundColor: 'rgba(0, 119, 204, 0.2)',
+      borderColor: 'rgba(0, 119, 204, 1)',
+      borderWidth: 2,
+      tension: 0.3,
+      pointBackgroundColor: 'rgba(0, 119, 204, 1)',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Customer Satisfaction vs. Number of Product Options',
+        font: {
+          size: 16
+        }
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+      },
+      legend: {
+        position: 'top',
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Number of Product Options'
+        }
+      },
+      y: {
+        min: 5,
+        max: 10,
+        title: {
+          display: true,
+          text: 'Rating / Percentage'
+        }
+      }
+    }
+  }
+});
+
+// Chart.js for the Cricket Analysis section
+const cricketCtx = document.getElementById('cricketChart').getContext('2d');
+const cricketChart = new Chart(cricketCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Test', 'Day-Night Test', 'ODI', 'T20I', 'Subcontinent'],
+    datasets: [{
+      label: 'Toss Win to Match Win Correlation (%)',
+      data: [53.2, 58.7, 51.4, 48.9, 62.1],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 206, 86, 0.6)',
+        'rgba(75, 192, 192, 0.6)',
+        'rgba(153, 102, 255, 0.6)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Impact of Winning the Toss on Match Outcomes',
+        font: {
+          size: 16
+        }
+      },
+      legend: {
+        display: false
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.parsed.y + '% win rate after winning toss';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Match Format / Condition'
+        }
+      },
+      y: {
+        min: 40,
+        max: 70,
+        title: {
+          display: true,
+          text: 'Win Percentage After Winning Toss'
+        },
+        ticks: {
+          callback: function(value) {
+            return value + '%';
+          }
+        }
+      }
+    }
+  }
+});
+
+// Add smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Add header scroll effect
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.style.padding = '1rem 0';
+    header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+  } else {
+    header.style.padding = '1.5rem 0';
+    header.style.boxShadow = 'none';
+  }
+});
