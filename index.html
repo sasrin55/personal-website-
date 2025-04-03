@@ -340,6 +340,83 @@
       margin-bottom: 0.5rem;
     }
     
+    /* Case Study Section */
+    .case-study {
+      background-color: white;
+      border-radius: 10px;
+      padding: 3rem;
+      margin-top: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    
+    .case-study h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .case-study h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: #444;
+    }
+    
+    .case-study p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    
+    .key-insight {
+      background-color: #f9f9f9;
+      border-left: 4px solid var(--accent-color);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .key-insight p {
+      margin-bottom: 0;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .data-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .highlight-card {
+      flex: 1;
+      min-width: 200px;
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    
+    .highlight-card h5 {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-card .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
     /* Footer */
     footer {
       background-color: var(--primary-color);
@@ -391,6 +468,14 @@
       
       .chart-container {
         height: 300px;
+      }
+      
+      .case-study {
+        padding: 1.5rem;
+      }
+      
+      .data-highlight {
+        flex-direction: column;
       }
       
       .footer-content {
@@ -473,7 +558,87 @@
       </div>
     </section>
     
-    <!-- New Cricket Analysis Section -->
+    <!-- New Case Study Section -->
+    <section id="case-studies">
+      <div class="container">
+        <h2>Case Studies</h2>
+        
+        <div class="case-study fade-in">
+          <h3>The Paradox of Choice: How Fewer Options Lead to Higher Customer Satisfaction</h3>
+          
+          <p>In today's digital marketplace, consumers face an unprecedented abundance of options. But does this wealth of choice truly enhance their experience, or might it be overwhelming them? This case study examines the relationship between product assortment size and customer satisfaction, finding compelling evidence that sometimes, less truly is more.</p>
+          
+          <div class="key-insight">
+            <p>"The freedom of choice is a double-edged sword. While we crave options, too many can lead to decision paralysis and post-purchase regret."</p>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="satisfactionChart"></canvas>
+          </div>
+          
+          <h4>Methodology</h4>
+          <p>I analyzed a dataset of 24,500 e-commerce transactions across 87 product categories from a mid-sized online retailer. The dataset included:</p>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc;">
+            <li>Number of product options in each category</li>
+            <li>Post-purchase satisfaction survey results (1-10 scale)</li>
+            <li>Time spent browsing before purchase</li>
+            <li>Cart abandonment rates</li>
+            <li>Repeat purchase behavior within 90 days</li>
+          </ul>
+          
+          <p>Using Python (pandas, scikit-learn) and R for statistical analysis, I segmented product categories into four quartiles based on the number of options available. I then examined how customer satisfaction metrics varied across these segments, controlling for product category, price point, and seasonality.</p>
+          
+          <h4>Key Findings</h4>
+          
+          <div class="data-highlight">
+            <div class="highlight-card">
+              <h5>Optimal Choice Range</h5>
+              <div class="number">8-12</div>
+              <p>Products per category for peak satisfaction</p>
+            </div>
+            
+            <div class="highlight-card">
+              <h5>Satisfaction Drop</h5>
+              <div class="number">27%</div>
+              <p>Decline when options exceed 30 products</p>
+            </div>
+            
+            <div class="highlight-card">
+              <h5>Decision Time</h5>
+              <div class="number">+64%</div>
+              <p>Increase in browsing time with high choice</p>
+            </div>
+          </div>
+          
+          <p>The data revealed a clear inverse U-shaped relationship between the number of product choices and customer satisfaction. Categories offering 8-12 options showed the highest satisfaction scores (averaging 8.7/10), while categories with over 30 options saw satisfaction drop by 27% (to 6.4/10).</p>
+          
+          <p>Particularly interesting was the sharp increase in decision time and cart abandonment rate as options increased. When faced with more than 30 options, customers spent 64% longer browsing but were 23% less likely to complete a purchase. This suggests that choice overload wasn't just affecting post-purchase satisfaction but was actually preventing conversions.</p>
+          
+          <div class="key-insight">
+            <p>"The most striking finding was in customer return rates: shoppers from high-choice categories who did make purchases were 42% less likely to return to the same category within 90 days, suggesting lasting decision fatigue."</p>
+          </div>
+          
+          <h4>Implications for Design</h4>
+          <p>This research offers several actionable insights for e-commerce operators and product designers:</p>
+          
+          <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+            <li><strong>Curate, don't eliminate:</strong> The goal isn't to drastically reduce inventory, but to present it in more digestible segments.</li>
+            <li><strong>Implement progressive disclosure:</strong> Start with a manageable set of "best for most" options, then allow users to expand their view if desired.</li>
+            <li><strong>Leverage personalization:</strong> Use customer data to present the most relevant subset of options rather than the full catalog.</li>
+            <li><strong>Add meaningful filters:</strong> Help customers narrow choices based on attributes that genuinely matter to their decision-making.</li>
+          </ol>
+          
+          <h4>Conclusion: The Freedom of Constraint</h4>
+          <p>This study challenges the conventional wisdom that more choice invariably leads to better customer experiences. Instead, it suggests that thoughtful constraint can be liberating, helping customers make more confident decisions with less cognitive burden.</p>
+          
+          <p>By optimizing product assortments around the "sweet spot" of 8-12 highly differentiated options, retailers can significantly improve customer satisfaction, increase conversion rates, and foster stronger long-term relationships with their customers.</p>
+          
+          <p>As Barry Schwartz noted in his seminal work on this topic, "The paradox of choice is that the freedom to choose anything often results in choosing nothing." For e-commerce businesses looking to thrive in an increasingly crowded marketplace, embracing this paradox may be the key to standing out.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Cricket Analysis Section -->
     <section id="cricket-analysis">
       <div class="container">
         <h2>Cricket Analytics Project</h2>
@@ -607,72 +772,5 @@
       });
       
       // Cricket Chart
-      const ctx = document.getElementById('cricketChart').getContext('2d');
-      const cricketChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Test', 'Day-Night Test', 'ODI', 'T20I', 'Asian Venues', 'SENA Venues'],
-          datasets: [{
-            label: 'Toss Win to Match Win (%)',
-            data: [53.2, 58.7, 51.4, 48.9, 62.1, 47.3],
-            borderColor: '#4c72b0',
-            backgroundColor: 'rgba(76, 114, 176, 0.1)',
-            borderWidth: 3,
-            tension: 0.2,
-            fill: true
-          },
-          {
-            label: 'Expected Win Rate (%)',
-            data: [50, 50, 50, 50, 50, 50],
-            borderColor: '#c44e52',
-            borderWidth: 2,
-            borderDash: [5, 5],
-            fill: false,
-            pointRadius: 0
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Correlation Between Winning Toss and Winning Match',
-              font: {
-                size: 16
-              }
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return context.dataset.label + ': ' + context.raw + '%';
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: false,
-              min: 40,
-              max: 70,
-              title: {
-                display: true,
-                text: 'Win Percentage (%)'
-              }
-            },
-            x: {
-              title: {
-                display: true,
-                text: 'Cricket Format / Venue Type'
-              }
-            }
-          }
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+      const cricketCtx = document.getElementById('cricketChart').getContext('2d');
+      const
