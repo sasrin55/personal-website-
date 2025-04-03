@@ -863,32 +863,21 @@
         }
       });
 
-      // Chart 1: Customer Satisfaction
-      const satisfactionCanvas = document.getElementById('satisfactionChart');
-      if (satisfactionCanvas) {
-        new Chart(satisfactionCanvas.getContext('2d'), {
+                // Only keep necessary chart initialization
+          
+          // Chart 1: Simplified Customer Satisfaction
+          const satisfactionCanvas = document.getElementById('satisfactionChart');
+          if (satisfactionCanvas) {
+            new Chart(satisfactionCanvas.getContext('2d'), {
           type: 'line',
           data: {
             labels: ['1-4', '5-7', '8-12', '13-20', '21-30', '31+'],
             datasets: [{
               label: 'Satisfaction (1-10)',
               data: [7.2, 8.1, 8.7, 7.6, 6.9, 6.4],
-              backgroundColor: 'rgba(46, 139, 87, 0.2)',
+              backgroundColor: 'rgba(46, 139, 87, 0.7)',
               borderColor: 'rgba(46, 139, 87, 1)',
-              borderWidth: 3,
-              tension: 0.3,
-              pointRadius: 5,
-              pointBackgroundColor: 'rgba(46, 139, 87, 1)'
-            }, {
-              label: 'Completion Rate (%)',
-              data: [81, 87, 92, 85, 79, 69],
-              backgroundColor: 'rgba(20, 27, 77, 0.2)',
-              borderColor: 'rgba(20, 27, 77, 1)',
-              borderWidth: 3,
-              tension: 0.3,
-              pointRadius: 5,
-              pointBackgroundColor: 'rgba(20, 27, 77, 1)',
-              yAxisID: 'y1'
+              borderWidth: 3
             }]
           },
           options: {
@@ -935,16 +924,6 @@
                 min: 5,
                 max: 10
               },
-              y1: {
-                position: 'right',
-                title: {
-                  display: true,
-                  text: 'Completion Rate (%)',
-                  font: { weight: 'bold' }
-                },
-                min: 60,
-                max: 100
-              },
               x: {
                 title: {
                   display: true,
@@ -966,14 +945,9 @@
             labels: ['View', 'Add to Cart', 'Checkout', 'Purchase'],
             datasets: [
               {
-                label: '8-12 Options',
+                label: '8-12 Options (Optimal)',
                 data: [100, 78, 65, 52],
                 backgroundColor: 'rgba(46, 139, 87, 0.7)'
-              },
-              {
-                label: '31+ Options',
-                data: [100, 62, 43, 31],
-                backgroundColor: 'rgba(220, 53, 69, 0.7)'
               }
             ]
           },
@@ -1055,36 +1029,18 @@
       const engagementCanvas = document.getElementById('engagementChart');
       if (engagementCanvas) {
         new Chart(engagementCanvas.getContext('2d'), {
-          type: 'line',
+          type: 'bar',
           data: {
-            labels: ['0h', '6h', '12h', '24h', '36h', '48h', '72h', '96h'],
+            labels: ['Instagram', 'Twitter', 'LinkedIn'],
             datasets: [
               {
-                label: 'Instagram',
-                data: [100, 85, 71, 52, 38, 29, 18, 12],
-                borderColor: '#E1306C',
-                backgroundColor: 'rgba(225, 48, 108, 0.2)',
-                tension: 0.3,
-                pointRadius: 5,
-                borderWidth: 3
-              },
-              {
-                label: 'Twitter',
-                data: [100, 62, 35, 19, 10, 6, 3, 1],
-                borderColor: '#1DA1F2',
-                backgroundColor: 'rgba(29, 161, 242, 0.2)',
-                tension: 0.3,
-                pointRadius: 5,
-                borderWidth: 3
-              },
-              {
-                label: 'LinkedIn',
-                data: [100, 92, 83, 68, 57, 49, 32, 21],
-                borderColor: '#0077B5',
-                backgroundColor: 'rgba(0, 119, 181, 0.2)',
-                tension: 0.3,
-                pointRadius: 5,
-                borderWidth: 3
+                label: 'Content Half-Life (Hours)',
+                data: [21, 4, 48],
+                backgroundColor: [
+                  'rgba(225, 48, 108, 0.7)',
+                  'rgba(29, 161, 242, 0.7)',
+                  'rgba(0, 119, 181, 0.7)'
+                ]
               }
             ]
           },
@@ -1093,35 +1049,19 @@
             plugins: {
               title: {
                 display: true,
-                text: 'Engagement Decay Over Time',
+                text: 'Content Half-Life by Platform',
                 font: { size: 16, weight: 'bold' },
                 color: '#141b4d'
-              },
-              tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    let label = context.dataset.label || '';
-                    return label + ': ' + context.raw + '% of initial engagement';
-                  }
-                }
               }
             },
             scales: {
               y: {
                 title: {
                   display: true,
-                  text: 'Remaining Engagement (%)',
+                  text: 'Hours',
                   font: { weight: 'bold' }
                 },
-                min: 0,
-                max: 100
-              },
-              x: {
-                title: {
-                  display: true,
-                  text: 'Hours After Posting',
-                  font: { weight: 'bold' }
-                }
+                beginAtZero: true
               }
             }
           }
@@ -1134,22 +1074,16 @@
         new Chart(timeOfDayCanvas.getContext('2d'), {
           type: 'bar',
           data: {
-            labels: ['6-9AM', '9-12PM', '12-3PM', '3-6PM', '6-9PM', '9-12AM'],
+            labels: ['9AM-11AM', '12PM-1PM', '8PM-10PM'],
             datasets: [
               {
-                label: 'Instagram',
-                data: [62, 75, 83, 90, 100, 94],
-                backgroundColor: 'rgba(225, 48, 108, 0.7)'
-              },
-              {
-                label: 'Twitter',
-                data: [71, 88, 100, 92, 84, 68],
-                backgroundColor: 'rgba(29, 161, 242, 0.7)'
-              },
-              {
-                label: 'LinkedIn',
-                data: [85, 100, 88, 72, 54, 41],
-                backgroundColor: 'rgba(0, 119, 181, 0.7)'
+                label: 'Peak Engagement Time',
+                data: [100, 85, 92],
+                backgroundColor: [
+                  'rgba(0, 119, 181, 0.7)',
+                  'rgba(29, 161, 242, 0.7)', 
+                  'rgba(225, 48, 108, 0.7)'
+                ]
               }
             ]
           },
@@ -1158,9 +1092,17 @@
             plugins: {
               title: {
                 display: true,
-                text: 'Engagement by Time of Day',
+                text: 'Platform Peak Posting Times',
                 font: { size: 16, weight: 'bold' },
                 color: '#141b4d'
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const platforms = ['LinkedIn', 'Twitter', 'Instagram'];
+                    return platforms[context.dataIndex] + ': ' + context.raw + '% engagement';
+                  }
+                }
               }
             },
             scales: {
@@ -1238,11 +1180,17 @@
         new Chart(cricketCanvas.getContext('2d'), {
           type: 'bar',
           data: {
-            labels: ['Test', 'Day-Night Test', 'ODI', 'T20I', 'Subcontinent'],
+            labels: ['Test', 'ODI', 'T20I', 'Day-Night Test', 'Subcontinent'],
             datasets: [{
-              label: 'Toss Win %',
-              data: [53.2, 58.7, 51.4, 48.9, 62.1],
-              backgroundColor: 'rgba(46, 139, 87, 0.7)'
+              label: 'Win % After Winning Toss',
+              data: [53.2, 51.4, 48.9, 58.7, 62.1],
+              backgroundColor: [
+                'rgba(46, 139, 87, 0.7)',
+                'rgba(46, 139, 87, 0.7)',
+                'rgba(46, 139, 87, 0.7)',
+                'rgba(236, 100, 75, 0.7)',
+                'rgba(236, 100, 75, 0.7)'
+              ]
             }]
           },
           options: {
@@ -1276,17 +1224,15 @@
         new Chart(teamComparisonCanvas.getContext('2d'), {
           type: 'bar',
           data: {
-            labels: ['India', 'Australia', 'England', 'South Africa', 'Pakistan', 'New Zealand'],
+            labels: ['India', 'Pakistan', 'Australia', 'England'],
             datasets: [{
-              label: 'Toss Win Advantage',
-              data: [14.2, 8.7, 7.9, 9.3, 12.6, 6.8],
+              label: 'Toss Win Advantage (%)',
+              data: [14.2, 12.6, 8.7, 7.9],
               backgroundColor: [
                 'rgba(0, 0, 128, 0.7)',
-                'rgba(255, 204, 0, 0.7)',
-                'rgba(0, 51, 153, 0.7)',
-                'rgba(0, 102, 51, 0.7)',
                 'rgba(0, 153, 0, 0.7)',
-                'rgba(0, 0, 0, 0.7)'
+                'rgba(255, 204, 0, 0.7)',
+                'rgba(0, 51, 153, 0.7)'
               ]
             }]
           },
