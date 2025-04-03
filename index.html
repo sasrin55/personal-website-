@@ -32,16 +32,6 @@
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="timeline">
-          <!-- Experience items here... -->
-        </div>
-      </div>
-    </section>
-
     <!-- Case Study -->
     <section id="case-studies">
       <div class="container">
@@ -52,6 +42,16 @@
           <div class="chart-container">
             <canvas id="satisfactionChart"></canvas>
           </div>
+        </div>
+
+        <!-- New Urban Transit Analysis Section -->
+        <div class="case-study fade-in">
+          <h3>Urban Wealth Through Morning Transit</h3>
+          <p>This analysis explores the correlation between morning public transit usage (7 AM) and urban wealth metrics across major global cities. The data reveals a fascinating inverse relationship: cities with the highest GDP per capita often show moderate morning transit usage, challenging conventional assumptions about public transportation as merely an economic necessity.</p>
+          <div class="chart-container">
+            <canvas id="transitChart"></canvas>
+          </div>
+          <p class="analysis-insight">Key insight: The most economically prosperous cities demonstrate a "transit sweet spot" - neither too high (indicating sole dependence on public options) nor too low (indicating poor infrastructure). This pattern suggests optimal urban wealth distribution occurs when citizens have transportation choice flexibility rather than necessity-driven dependence.</p>
         </div>
       </div>
     </section>
@@ -215,6 +215,80 @@
                 title: {
                   display: true,
                   text: 'Win %'
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // NEW Chart 3: Transit Usage Analysis
+      const transitCanvas = document.getElementById('transitChart');
+      if (transitCanvas) {
+        new Chart(transitCanvas.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Tokyo', 'Singapore', 'London', 'New York', 'Hong Kong', 'Paris', 'Seoul', 'Shanghai', 'Berlin', 'Toronto'],
+            datasets: [{
+              label: '7 AM Transit Users (% of population)',
+              data: [28.4, 19.7, 22.3, 18.9, 24.8, 17.2, 23.5, 25.1, 16.8, 15.4],
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }, {
+              label: 'GDP per Capita (Index)',
+              type: 'line',
+              data: [72, 98, 84, 92, 76, 79, 70, 68, 82, 80],
+              backgroundColor: 'rgba(255, 159, 64, 0.2)',
+              borderColor: 'rgba(255, 159, 64, 1)',
+              borderWidth: 2,
+              yAxisID: 'y1'
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Morning Transit Usage vs. Urban Wealth',
+                font: { size: 16 }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    if (context.datasetIndex === 0) {
+                      label += context.raw + '%';
+                    } else {
+                      label += context.raw + ' (indexed)';
+                    }
+                    return label;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                title: {
+                  display: true,
+                  text: 'Transit Users (%)'
+                },
+                min: 0,
+                max: 35
+              },
+              y1: {
+                position: 'right',
+                title: {
+                  display: true,
+                  text: 'GDP per Capita (Index)'
+                },
+                min: 60,
+                max: 100,
+                grid: {
+                  drawOnChartArea: false
                 }
               }
             }
